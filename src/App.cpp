@@ -1,7 +1,10 @@
 #include <iostream>
 
+#include "BaseLib/Util.h"
+#include <vector>
+
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	std::cout << BaseLib::Util::GenerateKey();
 	return 0;
 }
