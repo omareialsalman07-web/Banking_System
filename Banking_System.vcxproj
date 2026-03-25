@@ -94,7 +94,9 @@
     <ClInclude Include="src\BaseLib\Date_Time\Period.h" />
     <ClInclude Include="src\BaseLib\String.h" />
     <ClInclude Include="src\BaseLib\Util.h" />
+    <ClInclude Include="src\Core\IPersistable.h" />
     <ClInclude Include="src\Core\Person.h" />
+    <ClInclude Include="src\Core\Repository.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

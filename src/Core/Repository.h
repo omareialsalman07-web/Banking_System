@@ -1,0 +1,90 @@
+﻿#pragma once
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <algorithm>
+
+template <class T>
+class Repository
+{
+private:
+	std::string _FileName;
+public:
+        Repository(const std::string& FileName) : _FileName(FileName) {}
+
+	std::vector<T> LoadAll()
+    {
+        std::vector<T> vList;
+        std::fstream file(_FileName, std::ios::in);
+
+        if (file.is_open())
+        {
+            std::string line;
+            while (std::getline(file, line))
+            {
+                T obj;
+                obj.FromLine(line);
+                vList.push_back(obj);
+            }
+            file.close();
+        }
+        return vList;
+    }
+	void SaveAll(const std::vector<T>& list)
+    {
+        std::fstream file(_FileName, std::ios::out);
+
+        for (const T& obj : list)
+        {
+            file << obj.ToLine() << std::endl;
+        }
+
+        file.close();
+    }
+
+	T Find(const std::string& Key)
+    {
+        std::vector<T> list = LoadAll();
+
+        for (const T& obj : list)
+        {
+            if (obj.GetKey() == Key)
+                return obj;
+        }
+
+        return T();
+    }
+	void Add(const T& obj)
+    {
+        std::fstream file(_FileName, std::ios::app);
+        file << obj.ToLine() << std::endl;
+        file.close();
+    }
+	void Update(T obj)
+    {
+        std::vector<T> vList = LoadAll();
+
+        for (T& item : vList)
+        {
+            if (item.GetKey() == obj.GetKey())
+            {
+                item = obj;
+                break;
+            }
+        }
+
+        SaveAll(vList);
+    }
+    void Delete(const std::string& Key)
+    {
+        std::vector<T> list = LoadAll();
+
+        list.erase(
+            std::remove_if(list.begin(), list.end(),
+                [&](const T& obj) { return obj.GetKey() == Key; }),
+            list.end());
+
+        SaveAll(list);
+    }
+};
