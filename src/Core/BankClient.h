@@ -12,10 +12,12 @@ private:
 	double _Balance;
 
 public:
+	BankClient() = default;
+
 	BankClient(const std::string& FirstName, const std::string& LastName, const std::string& Email, 
 		const std::string& Phone, const std::string& AccountNumber, double Balance);
 	
-	void SetAccountNumber(std::string AccountNumber) { _AccountNumber = AccountNumber; }
+	//void SetAccountNumber(std::string AccountNumber) { _AccountNumber = AccountNumber; }
 	std::string GetAccountNumber() { return _AccountNumber; }
 	
 	void SetBalance(double Balance) { _Balance = Balance; }
@@ -25,5 +27,10 @@ public:
 	void FromLine(std::string Line, const std::string& separetor = "#//#") override;
 	
 	std::string GetKey() const override { return _AccountNumber; }
+
+	bool IsEmpty() const { return _AccountNumber == ""; }
+
+	bool Deposit(double Amount);
+	bool Withdraw(double Amount);
 };
 

@@ -27,8 +27,30 @@ void BankClient::FromLine(std::string Line, const std::string& separetor)
 		SetLastName(vData[1]);
 		SetEmail(vData[2]);
 		SetPhone(vData[3]);
-		SetAccountNumber(vData[4]);
+		_AccountNumber = vData[4];
 		SetBalance(std::stod(vData[5]));
+	}
+}
+
+bool BankClient::Deposit(double Amount)
+{
+	if (IsEmpty())
+		return false;
+	else
+	{
+		_Balance += Amount;
+		return true;
+	}
+}
+
+bool BankClient::Withdraw(double Amount)
+{
+	if (Amount > _Balance || IsEmpty())
+		return false;
+	else
+	{
+		Deposit(-Amount);
+		return true;
 	}
 }
 

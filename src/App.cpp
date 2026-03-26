@@ -8,11 +8,11 @@ int main()
 {
 	Repository<BankClient> clientRepo("CLIENTS.txt");
 
-	BankClient client1("Omar", "Ali", "O@gmail.com", "0123456789", "A101", 1000.0);
+	BankClient client = clientRepo.Find("A101");
 
-	clientRepo.Add(client1);
+	client.Withdraw(1000);
 
-	std::cout << client1.ToLine() << std::endl;
+	clientRepo.Update(client);
 
 	return 0;
 }

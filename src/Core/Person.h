@@ -13,6 +13,8 @@ private:
 
 public:
 
+    Person() = default;
+
     Person(std::string FirstName, std::string LastName, std::string Email, std::string Phone)
     {
 

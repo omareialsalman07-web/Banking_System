@@ -61,8 +61,10 @@ public:
         file << obj.ToLine() << std::endl;
         file.close();
     }
-	void Update(T obj)
+	bool Update(T obj)
     {
+		bool found = false;
+
         std::vector<T> vList = LoadAll();
 
         for (T& item : vList)
@@ -70,11 +72,14 @@ public:
             if (item.GetKey() == obj.GetKey())
             {
                 item = obj;
+				found = true;
                 break;
             }
         }
+        if(found)
+            SaveAll(vList);
 
-        SaveAll(vList);
+		return found;
     }
     void Delete(const std::string& Key)
     {
