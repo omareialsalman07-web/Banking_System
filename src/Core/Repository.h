@@ -55,11 +55,16 @@ public:
 
         return T();
     }
-	void Add(const T& obj)
+	bool Add(const T& obj)
     {
+		if (!Find(obj.GetKey()).IsEmpty()) // if the object already exists, Don't add it again
+            return false;
+
         std::fstream file(_FileName, std::ios::app);
         file << obj.ToLine() << std::endl;
         file.close();
+
+        return true;
     }
 	bool Update(T obj)
     {

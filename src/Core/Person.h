@@ -15,7 +15,7 @@ public:
 
     Person() = default;
 
-    Person(std::string FirstName, std::string LastName, std::string Email, std::string Phone)
+    Person(const std::string& FirstName, const std::string& LastName, const std::string& Email, const std::string& Phone)
     {
 
         _FirstName = FirstName;

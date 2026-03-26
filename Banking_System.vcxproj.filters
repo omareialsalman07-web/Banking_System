@@ -33,10 +33,10 @@
     <ClCompile Include="src\BaseLib\Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\BankUser.cpp">
+    <ClCompile Include="src\Core\BankClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\BankClient.cpp">
+    <ClCompile Include="src\Core\BankUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,14 +62,15 @@
     <ClInclude Include="src\Core\Repository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\BankUser.h">
+    <ClInclude Include="src\Core\BankClient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\BankClient.h">
+    <ClInclude Include="src\Core\BankUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
+    <Text Include="USERS.txt" />
   </ItemGroup>
 </Project>

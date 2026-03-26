@@ -85,6 +85,7 @@
     <None Include="Banking_System.slnx" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\BankUser.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Date.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Period.cpp" />
@@ -93,8 +94,8 @@
     <ClCompile Include="src\Core\BankClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\BankClient.h" />
     <ClInclude Include="src\Core\BankUser.h" />
+    <ClInclude Include="src\Core\BankClient.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Date.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Period.h" />
     <ClInclude Include="src\BaseLib\String.h" />
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
+    <Text Include="USERS.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

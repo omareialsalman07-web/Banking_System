@@ -53,4 +53,3 @@ bool BankClient::Withdraw(double Amount)
 		return true;
 	}
 }
-
