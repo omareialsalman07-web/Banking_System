@@ -8,7 +8,7 @@ BankClient::BankClient(const std::string& FirstName, const std::string& LastName
 	: Person(FirstName, LastName, Email, Phone)
 {
 	_AccountNumber = AccountNumber;
-	_Balance = Balance;
+	SetBalance(Balance);
 }
 
 std::string BankClient::ToLine(const std::string& separetor) const

@@ -18,10 +18,10 @@ public:
     Person(const std::string& FirstName, const std::string& LastName, const std::string& Email, const std::string& Phone)
     {
 
-        _FirstName = FirstName;
-        _LastName = LastName;
-        _Email = Email;
-        _Phone = Phone;
+		SetFirstName(FirstName);
+		SetLastName(LastName);
+		SetEmail(Email);
+		SetPhone(Phone);
     }
 
     void SetFirstName(std::string FirstName) { _FirstName = FirstName; }

@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Banking_System.slnx" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp">

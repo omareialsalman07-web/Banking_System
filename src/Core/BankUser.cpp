@@ -3,16 +3,19 @@
 
 #include <vector>
 
-BankUser::BankUser(const std::string& FirstName, const std::string& LastName, const std::string& Email, const std::string& Phone, const std::string& UserName, const std::string& Password)
+BankUser::BankUser(const std::string& FirstName, const std::string& LastName, const std::string& Email, 
+	const std::string& Phone, const std::string& UserName, const std::string& Password, int Permissions)
 	: Person(FirstName, LastName, Email, Phone)
 {
 	_UserName = UserName;
-	_Password = Password;
+	SetPassword(Password);
+	SetPermissions(Permissions);
 }
 
 std::string BankUser::ToLine(const std::string& separetor) const
 {
-	return GetFirstName() + separetor + GetLastName() + separetor + GetEmail() + separetor + GetPhone() + separetor + _UserName + separetor + _Password;
+	return GetFirstName() + separetor + GetLastName() + separetor + GetEmail() + separetor + 
+		GetPhone() + separetor + _UserName + separetor + _Password + separetor + std::to_string(_Permissions);
 }
 
 void BankUser::FromLine(std::string Line, const std::string& separetor)
@@ -25,4 +28,5 @@ void BankUser::FromLine(std::string Line, const std::string& separetor)
 	SetPhone(vData[3]);
 	_UserName = vData[4];
 	SetPassword(vData[5]);
+	SetPermissions(std::stoi(vData[6]));
 }
