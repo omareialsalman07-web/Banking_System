@@ -58,6 +58,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -73,6 +74,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -88,8 +90,11 @@
     <ClCompile Include="src\BaseLib\Date_Time\Period.cpp" />
     <ClCompile Include="src\BaseLib\String.cpp" />
     <ClCompile Include="src\BaseLib\Util.cpp" />
+    <ClCompile Include="src\Core\BankClient.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\BankClient.h" />
+    <ClInclude Include="src\Core\BankUser.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Date.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Period.h" />
     <ClInclude Include="src\BaseLib\String.h" />
@@ -97,6 +102,9 @@
     <ClInclude Include="src\Core\IPersistable.h" />
     <ClInclude Include="src\Core\Person.h" />
     <ClInclude Include="src\Core\Repository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CLIENTS.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
