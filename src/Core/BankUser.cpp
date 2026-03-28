@@ -30,3 +30,13 @@ void BankUser::FromLine(std::string Line, const std::string& separetor)
 	SetPassword(vData[5]);
 	SetPermissions(std::stoi(vData[6]));
 }
+
+BankUser BankUser::getEmptyUser()
+{
+	return BankUser("", "", "", "", "", "", 0);
+}
+
+bool BankUser::HasPermission(enPermissions PermissionRequired) const
+{
+	return (_Permissions & PermissionRequired) == PermissionRequired;
+}

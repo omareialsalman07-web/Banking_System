@@ -9,11 +9,11 @@ template <class T>
 class Repository
 {
 private:
-	std::string _FileName;
+    std::string _FileName;
 public:
-        Repository(const std::string& FileName) : _FileName(FileName) {}
+    Repository(const std::string& FileName) : _FileName(FileName) {}
 
-	std::vector<T> LoadAll()
+    std::vector<T> LoadAll()
     {
         std::vector<T> vList;
         std::fstream file(_FileName, std::ios::in);
@@ -31,7 +31,7 @@ public:
         }
         return vList;
     }
-	void SaveAll(const std::vector<T>& list)
+    void SaveAll(const std::vector<T>& list)
     {
         std::fstream file(_FileName, std::ios::out);
 
@@ -43,7 +43,7 @@ public:
         file.close();
     }
 
-	T Find(const std::string& Key)
+    T Find(const std::string& Key)
     {
         std::vector<T> list = LoadAll();
 
@@ -55,9 +55,12 @@ public:
 
         return T();
     }
-	bool Add(const T& obj)
+    bool Add(const T& obj)
     {
-		if (!Find(obj.GetKey()).IsEmpty()) // if the object already exists, Don't add it again
+        if (obj.isEmpty()) // if the object is empty, Don't add it
+            return false;
+
+        if (!Find(obj.GetKey()).IsEmpty()) // if the object already exists, Don't add it again
             return false;
 
         std::fstream file(_FileName, std::ios::app);
@@ -66,9 +69,9 @@ public:
 
         return true;
     }
-	bool Update(T obj)
+    bool Update(T obj)
     {
-		bool found = false;
+        bool found = false;
 
         std::vector<T> vList = LoadAll();
 
@@ -77,14 +80,14 @@ public:
             if (item.GetKey() == obj.GetKey())
             {
                 item = obj;
-				found = true;
+                found = true;
                 break;
             }
         }
-        if(found)
+        if (found)
             SaveAll(vList);
 
-		return found;
+        return found;
     }
     void Delete(const std::string& Key)
     {
@@ -97,4 +100,7 @@ public:
 
         SaveAll(list);
     }
+
+    inline static std::string GetStandard_ClientsFileName() { return "CLIENTS.txt"; }
+    inline static std::string GetStandard_UsersFileName() { return "USERS.txt"; }
 };

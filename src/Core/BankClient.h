@@ -29,6 +29,7 @@ public:
 	std::string GetKey() const override { return _AccountNumber; }
 
 	bool IsEmpty() const { return _AccountNumber == ""; }
+	BankClient getEmptyClient();
 
 	bool Deposit(double Amount);
 	bool Withdraw(double Amount);
