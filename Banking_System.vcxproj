@@ -89,9 +89,13 @@
     <None Include=".gitignore" />
     <None Include="Banking_System.slnx" />
     <None Include="Dependencies\lib-vc2022\glfw3.dll" />
+    <None Include="imgui.ini" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_stdlib.cpp" />
+    <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
     <ClCompile Include="src\App\Console.cpp" />
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\Core\BankUser.cpp" />
@@ -110,6 +114,9 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_stdlib.h" />
+    <ClInclude Include="src\GUI_Layer\MainMenu.h" />
+    <ClInclude Include="src\GUI_Layer\BaseWindow.h" />
     <ClInclude Include="src\App\Console.h" />
     <ClInclude Include="src\App\Application.h" />
     <ClInclude Include="Dependencies\include\GLFW\glfw3.h" />

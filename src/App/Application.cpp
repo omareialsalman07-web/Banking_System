@@ -1,10 +1,13 @@
 #include "Application.h"
 
 #include <GUI_Layer/Im_Gui.h>
+#include "GUI_Layer/MainMenu.h"
 
-Application::Application()
+Application::Application() : WindowToShow(enWindowToShow::eMainMenu)
 {
     Init();
+
+	mainMenu = std::make_unique<MainMenu>();
 }
 
 Application::~Application()
@@ -130,6 +133,18 @@ void Application::RenderMenuBar()
     }
 }
 
+void Application::RenderCurrentWindow()
+{
+    switch (WindowToShow)
+    {
+    case Application::eMainMenu:
+		mainMenu->Run();
+        break;
+    case Application::eLoginMenu:
+        break;
+    }
+}
+
 void Application::Run()
 {
     while (!glfwWindowShouldClose(window))
@@ -139,8 +154,11 @@ void Application::Run()
         RenderDockspace();
         RenderMenuBar();
 
+        RenderCurrentWindow();
+
         if (showConsole)
             console.Render(&showConsole);
+
 
         EndFrame();
     }
