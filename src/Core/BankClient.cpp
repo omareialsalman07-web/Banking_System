@@ -32,6 +32,11 @@ void BankClient::FromLine(std::string Line, const std::string& separetor)
 	}
 }
 
+BankClient BankClient::getEmptyClient()
+{
+	return BankClient("", "", "", "", "", 0);
+}
+
 bool BankClient::Deposit(double Amount)
 {
 	if (IsEmpty())
