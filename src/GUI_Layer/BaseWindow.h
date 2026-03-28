@@ -38,5 +38,6 @@ protected:
     void DrawScreenHeader(const char* text);
 
 private:
+	void _CenterWindow();
     void _RenderPopups();
 };

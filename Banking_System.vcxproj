@@ -93,6 +93,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI_Layer\LoginMenu.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_stdlib.cpp" />
     <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
     <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
@@ -114,6 +115,7 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI_Layer\LoginMenu.h" />
     <ClInclude Include="src\GUI_Layer\imgui\imgui_stdlib.h" />
     <ClInclude Include="src\GUI_Layer\MainMenu.h" />
     <ClInclude Include="src\GUI_Layer\BaseWindow.h" />

@@ -2,12 +2,17 @@
 
 #include <GUI_Layer/Im_Gui.h>
 #include "GUI_Layer/MainMenu.h"
+#include "GUI_Layer/LoginMenu.h"
 
-Application::Application() : WindowToShow(enWindowToShow::eMainMenu)
+Application::Application()
 {
     Init();
 
-	mainMenu = std::make_unique<MainMenu>();
+	mainMenu = std::make_unique<MainMenu>(this);
+	loginMenu = std::make_unique<LoginMenu>(this);
+
+    SetWindowToShow(enWindowToShow::eLoginMenu);
+	CurrentUser = BankUser::getEmptyUser();
 }
 
 Application::~Application()
@@ -141,6 +146,7 @@ void Application::RenderCurrentWindow()
 		mainMenu->Run();
         break;
     case Application::eLoginMenu:
+        loginMenu->Run();
         break;
     }
 }
@@ -162,4 +168,10 @@ void Application::Run()
 
         EndFrame();
     }
+}
+
+
+void Application::SetWindowToShow(enWindowToShow window)
+{
+	WindowToShow = window;
 }

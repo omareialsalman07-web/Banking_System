@@ -1,12 +1,18 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include "Console.h"
+#include <Core/BankUser.h>
 #include <iostream>
+#include <memory>
 
 class Application
 {
 public:
-    enum enWindowToShow { eMainMenu = 0, eLoginMenu = 1 };
+    enum enWindowToShow
+    {
+        eMainMenu = 0,
+        eLoginMenu = 1
+    };
 
     Application();
     ~Application();
@@ -30,11 +36,18 @@ private:
     Console console;
     int counter = 0;
 
-	std::unique_ptr<class MainMenu> mainMenu;
+    std::unique_ptr<class MainMenu> mainMenu;
+    std::unique_ptr<class LoginMenu> loginMenu;
 
-	enWindowToShow WindowToShow;
-	void RenderCurrentWindow();
+    enWindowToShow WindowToShow;
+
+    void RenderCurrentWindow();
+
+    BankUser CurrentUser;
 
 public:
-	inline void SetWindowToShow(enWindowToShow window) { WindowToShow = window; } 
+    void SetWindowToShow(enWindowToShow window);
+
+    const BankUser& GetCurrentUser() const { return CurrentUser; } // read-only
+    void SetCurrentUser(const BankUser& user) { CurrentUser = user; }
 };

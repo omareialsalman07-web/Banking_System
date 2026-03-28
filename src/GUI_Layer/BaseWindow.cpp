@@ -1,8 +1,7 @@
 #include "BaseWindow.h"
+
 #include "GUI_Layer/Im_GUI.h"
 #include <string>
-
-// ------------------------------------------------------------
 
 BaseWindow::BaseWindow(const std::string& title, bool canBeClosed, int ImWindowFlags)
 	: _Title(title), _isOpen(true), CanBeClosed(canBeClosed), imWindowFlags(ImWindowFlags)
@@ -13,14 +12,15 @@ void BaseWindow::Run()
 {
     if (!_isOpen)
         return;
-
     if (!ImGui::Begin(_Title.c_str(), (CanBeClosed? &_isOpen : nullptr), imWindowFlags))
     {
         ImGui::End();
         return;
     }
 
+    _CenterWindow();
     Render();
+    _RenderPopups();
 
     ImGui::End();
 }
@@ -43,18 +43,32 @@ void BaseWindow::ShowError(const std::string& message)
 {
     _ErrorMessage = message;
     _ShowErrorPopup = true;
-    ImGui::OpenPopup("Error");
 }
 
 void BaseWindow::ShowMessage(const std::string& message)
 {
     _InfoMessage = message;
     _ShowInfoPopup = true;
-    ImGui::OpenPopup("Message");
+}
+
+void BaseWindow::_CenterWindow()
+{
+    ImGui::SetWindowSize(ImVec2(600, 500));
+    ImGui::SetWindowPos(ImVec2((ImGui::GetIO().DisplaySize.x - 600) * 0.5f, (ImGui::GetIO().DisplaySize.y - 500) * 0.5f));
 }
 
 void BaseWindow::_RenderPopups()
 {
+    if (_ShowErrorPopup)
+    {
+        ImGui::OpenPopup("Error");
+    }
+
+    if (_ShowInfoPopup)
+    {
+        ImGui::OpenPopup("Message");
+    }
+
     // -------- Error Popup --------
     if (ImGui::BeginPopupModal("Error", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
     {

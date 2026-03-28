@@ -34,4 +34,3 @@ public:
 	bool Deposit(double Amount);
 	bool Withdraw(double Amount);
 };
-
