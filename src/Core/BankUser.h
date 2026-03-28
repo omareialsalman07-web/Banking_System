@@ -37,7 +37,7 @@ public:
 	std::string GetKey() const override { return _UserName; }
 	
 	bool IsEmpty() const { return _UserName == ""; }
-	BankUser getEmptyUser();
+	static BankUser getEmptyUser();
 
 	bool HasPermission(enPermissions PermissionRequired) const;
 };
