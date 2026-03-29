@@ -19,7 +19,6 @@ void MainMenu::Render()
 	{
 		Logut();
 	}
-
 }
 
 void MainMenu::Logut()

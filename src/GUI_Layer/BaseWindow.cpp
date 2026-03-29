@@ -12,13 +12,13 @@ void BaseWindow::Run()
 {
     if (!_isOpen)
         return;
-    if (!ImGui::Begin(_Title.c_str(), (CanBeClosed? &_isOpen : nullptr), imWindowFlags))
+
+    if (!ImGui::Begin(_Title.c_str(), (CanBeClosed? &_isOpen : nullptr), (ImGuiWindowFlags)imWindowFlags))
     {
         ImGui::End();
         return;
     }
 
-    _CenterWindow();
     Render();
     _RenderPopups();
 
@@ -49,12 +49,6 @@ void BaseWindow::ShowMessage(const std::string& message)
 {
     _InfoMessage = message;
     _ShowInfoPopup = true;
-}
-
-void BaseWindow::_CenterWindow()
-{
-    ImGui::SetWindowSize(ImVec2(600, 500));
-    ImGui::SetWindowPos(ImVec2((ImGui::GetIO().DisplaySize.x - 600) * 0.5f, (ImGui::GetIO().DisplaySize.y - 500) * 0.5f));
 }
 
 void BaseWindow::_RenderPopups()
