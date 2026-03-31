@@ -6,21 +6,56 @@
 #include <Core/Repository.h>
 
 
-LoginMenu::LoginMenu(Application* app) : BaseWindow("Login Menu", false), _App(app)
+LoginMenu::LoginMenu(Application* app) : BaseWindow("Login Menu", false, ImGuiWindowFlags_NoResize |
+     ImGuiWindowFlags_NoDocking), _App(app)
 {
 }
 
 void LoginMenu::Render()
 {
-	ImGui::Text("Username : "); ImGui::SameLine();
-	ImGui::InputText("##Username", &_Username);
-	ImGui::Text("Password : "); ImGui::SameLine();
-	ImGui::InputText("##Password", &_Password, ImGuiInputTextFlags_Password);
+    ImGuiViewport* viewport = ImGui::GetMainViewport();
 
-	if (ImGui::Button("Login"))
-	{
+    // Center the window
+    ImVec2 windowSize = ImVec2(300, 200);
+    ImGui::SetNextWindowPos(viewport->GetCenter(), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+    ImGui::SetWindowSize(windowSize);
+
+    // --- Center content horizontally ---
+    float contentWidth = 200.0f;
+    float windowWidth = ImGui::GetWindowSize().x;
+    float centerX = (windowWidth - contentWidth) * 0.5f;
+
+    // Username
+    ImGui::SetCursorPosX(centerX);
+    ImGui::Text("Username");
+
+    ImGui::SetCursorPosX(centerX);
+    ImGui::PushItemWidth(contentWidth);
+    ImGui::InputText("##username", &_Username);
+    ImGui::PopItemWidth();
+
+    ImGui::Spacing();
+
+    // Password
+    ImGui::SetCursorPosX(centerX);
+    ImGui::Text("Password");
+
+    ImGui::SetCursorPosX(centerX);
+    ImGui::PushItemWidth(contentWidth);
+    ImGui::InputText("##password", &_Password, ImGuiInputTextFlags_Password);
+    ImGui::PopItemWidth();
+
+    ImGui::Spacing();
+    ImGui::Spacing();
+
+    // Login Button (centered)
+    float buttonWidth = 120.0f;
+    ImGui::SetCursorPosX((windowWidth - buttonWidth) * 0.5f);
+
+    if (ImGui::Button("Login", ImVec2(buttonWidth, 0)))
+    {
 		Login();
-	}
+    }
 }
 
 void LoginMenu::Login()
@@ -32,7 +67,7 @@ void LoginMenu::Login()
 		if (_App)
 		{
 			_App->SetCurrentUser(bu);
-			_App->SetWindowToShow(Application::enWindowToShow::eMainMenu);
+			_App->SetAppState(Application::enApplicationState::eLoggedIn);
 		}
 	}
 	else

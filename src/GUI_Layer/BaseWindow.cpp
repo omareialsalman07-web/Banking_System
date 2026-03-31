@@ -10,9 +10,6 @@ BaseWindow::BaseWindow(const std::string& title, bool canBeClosed, int ImWindowF
 
 void BaseWindow::Run()
 {
-    if (!_isOpen)
-        return;
-
     if (!ImGui::Begin(_Title.c_str(), (CanBeClosed? &_isOpen : nullptr), (ImGuiWindowFlags)imWindowFlags))
     {
         ImGui::End();

@@ -7,7 +7,7 @@ private:
     std::string _Title;
 
 protected:
-    bool _isOpen;
+    bool _isOpen = true;
 
     // -------- Popup State --------
     std::string _ErrorMessage;

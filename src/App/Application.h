@@ -1,17 +1,17 @@
 #pragma once
-#include <GLFW/glfw3.h>
 #include "Console.h"
 #include <Core/BankUser.h>
 #include <iostream>
+#include <vector>
 #include <memory>
 
 class Application
 {
 public:
-    enum enWindowToShow
+    enum enApplicationState
     {
-        eMainMenu = 0,
-        eLoginMenu = 1
+        eLoggedIn = 0,
+        eLoggedOut = 1
     };
 
     Application();
@@ -28,9 +28,11 @@ private:
 
     void RenderDockspace();
     void RenderMenuBar();
+    void RenderWindows();
+    void RenderSub_Windows();
 
-private:
-    GLFWwindow* window;
+
+    struct GLFWwindow* window;
 
     bool showConsole = true;
     Console console;
@@ -39,15 +41,19 @@ private:
     std::unique_ptr<class MainMenu> mainMenu;
     std::unique_ptr<class LoginMenu> loginMenu;
 
-    enWindowToShow WindowToShow;
+    enApplicationState _AppState;
 
-    void RenderCurrentWindow();
 
     BankUser CurrentUser;
 
+	std::vector<std::unique_ptr<class BaseWindow>> vSubWindwos;
+
 public:
-    void SetWindowToShow(enWindowToShow window);
+    void SetAppState(enApplicationState appState);
 
     const BankUser& GetCurrentUser() const { return CurrentUser; } // read-only
     void SetCurrentUser(const BankUser& user) { CurrentUser = user; }
+
+    void CreateWindow(std::unique_ptr<BaseWindow> window);
+	inline int GetWindowsCount() const { return static_cast<int>(vSubWindwos.size()); }
 };

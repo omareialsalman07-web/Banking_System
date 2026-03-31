@@ -20,6 +20,7 @@
     <None Include="README.md" />
     <None Include="Dependencies\lib-vc2022\glfw3.dll" />
     <None Include="imgui.ini" />
+    <None Include="src\GUI_Layer\GUI_Layer" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -80,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI_Layer\LoginMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI_Layer\CleintListWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -165,7 +169,10 @@
     <ClInclude Include="src\GUI_Layer\LoginMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\App\CurrentUser.h">
+    <ClInclude Include="src\GUI_Layer\CleintListWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI_Layer\GUI_Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

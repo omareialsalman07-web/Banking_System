@@ -1,5 +1,6 @@
 #include "Application.h"
 
+#include <GLFW/glfw3.h>
 #include <GUI_Layer/Im_Gui.h>
 #include "GUI_Layer/MainMenu.h"
 #include "GUI_Layer/LoginMenu.h"
@@ -11,7 +12,7 @@ Application::Application()
 	mainMenu = std::make_unique<MainMenu>(this);
 	loginMenu = std::make_unique<LoginMenu>(this);
 
-    SetWindowToShow(enWindowToShow::eLoginMenu);
+    SetAppState(enApplicationState::eLoggedOut);
 	CurrentUser = BankUser::getEmptyUser();
 }
 
@@ -87,20 +88,24 @@ void Application::EndFrame()
 
 void Application::RenderDockspace()
 {
-    ImGuiWindowFlags flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+    ImGuiWindowFlags flags =
+        ImGuiWindowFlags_MenuBar |
+        ImGuiWindowFlags_NoTitleBar |
+        ImGuiWindowFlags_NoCollapse |
+        ImGuiWindowFlags_NoResize |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoBringToFrontOnFocus |
+        ImGuiWindowFlags_NoNavFocus;
 
     const ImGuiViewport* viewport = ImGui::GetMainViewport();
     ImGui::SetNextWindowPos(viewport->WorkPos);
     ImGui::SetNextWindowSize(viewport->WorkSize);
     ImGui::SetNextWindowViewport(viewport->ID);
 
-    flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse |
-        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
-
     ImGui::Begin("DockSpace", nullptr, flags);
 
     ImGuiID dockspaceID = ImGui::GetID("DockSpaceID");
-    ImGui::DockSpace(dockspaceID);
+    ImGui::DockSpace(dockspaceID, ImVec2(0, 0), ImGuiDockNodeFlags_PassthruCentralNode);
 
     ImGui::End();
 }
@@ -138,16 +143,30 @@ void Application::RenderMenuBar()
     }
 }
 
-void Application::RenderCurrentWindow()
+void Application::RenderWindows()
 {
-    switch (WindowToShow)
+    switch (_AppState)
     {
-    case Application::eMainMenu:
+    case Application::eLoggedIn:
 		mainMenu->Run();
+        RenderSub_Windows();
         break;
-    case Application::eLoginMenu:
+    case Application::eLoggedOut:
         loginMenu->Run();
         break;
+    }
+}
+
+void Application::RenderSub_Windows()
+{
+   vSubWindwos.erase(std::remove_if(vSubWindwos.begin(), vSubWindwos.end(),
+	   [](const std::unique_ptr<BaseWindow>& window) { return !window->IsOpen(); }),
+        vSubWindwos.end());
+
+    for (const auto& window : vSubWindwos)
+    {
+        if (window->IsOpen())
+            window->Run();
     }
 }
 
@@ -160,7 +179,7 @@ void Application::Run()
         RenderDockspace();
         RenderMenuBar();
 
-        RenderCurrentWindow();
+        RenderWindows();
 
         if (showConsole)
             console.Render(&showConsole);
@@ -171,7 +190,14 @@ void Application::Run()
 }
 
 
-void Application::SetWindowToShow(enWindowToShow window)
+void Application::SetAppState(enApplicationState appState)
 {
-	WindowToShow = window;
+	_AppState = appState;
+
+	vSubWindwos.erase(vSubWindwos.begin(), vSubWindwos.end()); // Clear all sub-windows when changing state. We don't want to keep them around if we log out for example.
+}
+
+void Application::CreateWindow(std::unique_ptr<BaseWindow> window)
+{
+	vSubWindwos.push_back(std::move(window)); // std::move to avoid copying the unique_ptr, which is not allowed. We transfer ownership instead.
 }
