@@ -115,6 +115,7 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="src\GUI_Layer\imgui\imstb_textedit.h" />
     <ClInclude Include="src\GUI_Layer\imgui\imstb_truetype.h" />
     <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
+    <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />

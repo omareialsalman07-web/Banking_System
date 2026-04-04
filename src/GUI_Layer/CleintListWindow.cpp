@@ -71,7 +71,8 @@ void CleintListWindow::_DrawChangeClientWindow()
     if(!_SelectedClient)
 		return;
 
-	DrawScreenHeader("Change Client");
+	std::string header = "Change Client : " + std::to_string(_Clients.size());
+	DrawScreenHeader(header.c_str());
 	ImGui::Begin("Change Client", nullptr, ImGuiWindowFlags_NoDocking);
 
 	if (!_IsClientDataLoaded)

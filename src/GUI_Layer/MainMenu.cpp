@@ -24,6 +24,10 @@ void MainMenu::Render()
 	{
 		_App->CreateWindow(std::make_unique<AddClientWindow>(_App->GetWindowsCount()));
 	}
+	if (ImGui::Button("Transactions", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
+	{
+		_App->CreateWindow(std::make_unique<TransactionsWindow>(_App->GetWindowsCount()));
+	}
 
 	if (ImGui::Button("Logout", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
