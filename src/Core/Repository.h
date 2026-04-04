@@ -57,7 +57,7 @@ public:
     }
     bool Add(const T& obj)
     {
-        if (obj.isEmpty()) // if the object is empty, Don't add it
+        if (obj.IsEmpty()) // if the object is empty, Don't add it
             return false;
 
         if (!Find(obj.GetKey()).IsEmpty()) // if the object already exists, Don't add it again

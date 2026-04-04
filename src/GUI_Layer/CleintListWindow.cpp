@@ -6,6 +6,9 @@
 
 CleintListWindow::CleintListWindow(int index) : BaseWindow("Client List : " + std::to_string(index))
 {
+	_Clients = _GetAllClients();
+    std::cout << _Clients[0].GetFirstName();
+
 }
 
 void CleintListWindow::Render()
@@ -16,7 +19,7 @@ void CleintListWindow::Render()
 
 	if (ImGui::Button("Refresh", RefreshButtonSize))
 	{
-
+        _Clients = _GetAllClients();
 	}
 
     if (ImGui::BeginTable("ScoreTable", 6,
@@ -33,12 +36,12 @@ void CleintListWindow::Render()
         for (int i = 0; i < _Clients.size(); i++)
         {
             ImGui::TableNextRow();
-            ImGui::TableSetColumnIndex(0); ImGui::Text("%s", _Clients[i].GetFirstName());
-            ImGui::TableSetColumnIndex(1); ImGui::Text("%s", _Clients[i].GetLastName());
-            ImGui::TableSetColumnIndex(2); ImGui::Text("%s", _Clients[i].GetEmail());
-            ImGui::TableSetColumnIndex(3); ImGui::Text("%s", _Clients[i].GetPhone());
-            ImGui::TableSetColumnIndex(3); ImGui::Text("%s", _Clients[i].GetAccountNumber());
-            ImGui::TableSetColumnIndex(4); ImGui::Text("%.3f", _Clients[i].GetBalance());
+            ImGui::TableSetColumnIndex(0); ImGui::Text("%s", _Clients[i].GetFirstName().c_str());
+            ImGui::TableSetColumnIndex(1); ImGui::Text("%s", _Clients[i].GetLastName().c_str());
+            ImGui::TableSetColumnIndex(2); ImGui::Text("%s", _Clients[i].GetEmail().c_str());
+            ImGui::TableSetColumnIndex(3); ImGui::Text("%s", _Clients[i].GetPhone().c_str());
+            ImGui::TableSetColumnIndex(4); ImGui::Text("%s", _Clients[i].GetAccountNumber().c_str());
+            ImGui::TableSetColumnIndex(5); ImGui::Text("%.3f", _Clients[i].GetBalance());
         }
 
         ImGui::EndTable();
@@ -49,4 +52,5 @@ std::vector<BankClient> CleintListWindow::_GetAllClients()
 {
 	Repository <BankClient> repo(Repository<BankClient>::GetStandard_ClientsFileName());
     return repo.LoadAll();
+
 }
