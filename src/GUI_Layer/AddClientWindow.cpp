@@ -26,6 +26,7 @@ void AddClientWindow::Render()
 
 	if (ImGui::Button("Add Client", ImVec2(size.x - 100, 20)))
 	{
+		Close();
 		_AddClient();
 	}
 
@@ -50,10 +51,10 @@ void AddClientWindow::_AddClient()
 		else
 		{
 			BankClient newClient(_FirstName, _LastName, _Email, _PhoneNumber, _AccountNumber, _Balance);
-			repo.Add(newClient);
-
-			ShowMessage("Client added successfully!");
-			Close();
+			if(repo.Add(newClient))
+				ShowMessage("Client added successfully!");
+			else
+				ShowError("Failed to add client!");
 		}
 	}
 }

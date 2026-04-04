@@ -16,7 +16,7 @@ private:
 	std::string _Email;
 	std::string _PhoneNumber;
 	std::string _AccountNumber;
-	double _Balance;
+	double _Balance = 0;
 
 	void _AddClient();
 };

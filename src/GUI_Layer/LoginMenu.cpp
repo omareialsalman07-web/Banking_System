@@ -64,11 +64,13 @@ void LoginMenu::Login()
 	BankUser bu = userRepo.Find(_Username);
 	if (!bu.IsEmpty() && bu.GetPassword() == _Password)
 	{
+
 		if (_App)
 		{
 			_App->SetCurrentUser(bu);
-			_App->SetAppState(Application::enApplicationState::eLoggedIn);
+            _App->SetAppState(Application::enApplicationState::eLoggedIn);
 		}
+		ShowMessage("Login successful!");
 	}
 	else
 	{
