@@ -13,7 +13,7 @@ private:
 
 public:
 	static enum enPermissions {
-		eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
+		eAdmin = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
 		pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
 	};
 
@@ -26,6 +26,7 @@ public:
 	std::string GetUserName() const { return _UserName; }
 
 	void SetPassword(std::string Password) { _Password = Password; }
+	void AddPermission(enPermissions Permission);
 	std::string GetPassword() const { return _Password; }
 
 	void SetPermissions(int Permissions) { _Permissions = Permissions; }
