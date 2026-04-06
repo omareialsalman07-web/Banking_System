@@ -28,6 +28,10 @@ void MainMenu::Render()
 	{
 		_App->CreateWindow(std::make_unique<TransactionsWindow>(_App->GetWindowsCount()));
 	}
+	if (ImGui::Button("Manage Users Window", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
+	{
+		_App->CreateWindow(std::make_unique<ManageUsersWindow>(_App->GetWindowsCount(), _App));
+	}
 
 	if (ImGui::Button("Logout", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{

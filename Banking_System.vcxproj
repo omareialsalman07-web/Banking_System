@@ -93,6 +93,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\AddClientWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\CleintListWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\LoginMenu.cpp" />
@@ -118,6 +119,7 @@
     <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
     <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
     <ClInclude Include="src\GUI_Layer\CleintListWindow.h" />
     <ClInclude Include="src\GUI_Layer\GUI_Layer.h" />
