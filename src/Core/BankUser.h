@@ -26,6 +26,7 @@ public:
 	std::string GetUserName() const { return _UserName; }
 
 	void SetPassword(std::string Password) { _Password = Password; }
+	void AddPermission(enPermissions Permission);
 	std::string GetPassword() const { return _Password; }
 
 	void SetPermissions(int Permissions) { _Permissions = Permissions; }

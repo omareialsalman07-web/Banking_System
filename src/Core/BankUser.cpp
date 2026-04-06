@@ -12,6 +12,14 @@ BankUser::BankUser(const std::string& FirstName, const std::string& LastName, co
 	SetPermissions(Permissions);
 }
 
+void BankUser::AddPermission(enPermissions Permission)
+{
+	if (enPermissions::eAdmin)
+		_Permissions = enPermissions::eAdmin;
+
+	_Permissions += Permission;
+}
+
 std::string BankUser::ToLine(const std::string& separetor) const
 {
 	return GetFirstName() + separetor + GetLastName() + separetor + GetEmail() + separetor + 
