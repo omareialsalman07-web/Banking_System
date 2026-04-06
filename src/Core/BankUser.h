@@ -13,8 +13,14 @@ private:
 
 public:
 	static enum enPermissions {
-		eAdmin = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
-		pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
+		eAdmin = 1,
+		pListClients = 2,
+		pAddNewClient = 4,
+		pDeleteClient = 8,
+		pUpdateClients = 16, 
+		pFindClient = 32,  
+		pTranactions = 64,  
+		pManageUsers = 128
 	};
 
 	BankUser() = default;
