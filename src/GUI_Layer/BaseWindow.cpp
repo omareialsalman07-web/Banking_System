@@ -1,6 +1,8 @@
 #include "BaseWindow.h"
 
 #include "GUI_Layer/Im_GUI.h"
+#include <BaseLib/Date_Time/Date.h>
+#include <BaseLib/Date_Time/Time.h>
 #include <string>
 
 BaseWindow::BaseWindow(const std::string& title, bool canBeClosed, int ImWindowFlags)
@@ -31,8 +33,10 @@ void BaseWindow::DrawScreenHeader(const char* text)
 
     ImGui::SetCursorPos(ImVec2(x, y));
     ImGui::TextUnformatted(text);
-    
 
+    std::string dateStr = "Date : " + BaseLib::Date().DateToString()  + " || Time : " + BaseLib::Time().TimeToString();
+    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.13f, 1.0f), dateStr.c_str());
+    
     ImGui::Separator();
 }
 

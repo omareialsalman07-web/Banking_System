@@ -94,6 +94,9 @@
     <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\BaseLib\Date_Time\Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseLib\Date_Time\Date.h">
@@ -190,6 +193,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseLib\Date_Time\Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

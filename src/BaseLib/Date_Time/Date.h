@@ -1,15 +1,17 @@
 #pragma once
 
 #include <iostream>
-#include <string>
-#include <vector>
-#include <ctime>
-#include "../String.h"
 
 using namespace std;
 
 namespace BaseLib
 {
+    class stDate
+    {
+        short _Hours = 1;
+        short _Minutes = 0;
+        short _Seconds = 0;
+    };
 
 class Date
 {
@@ -27,6 +29,8 @@ public:
     Date(short Day, short Month, short Year);
     Date(short DateOrderInYear, short Year);
 
+    static Date GetCurrnetDate();
+
     // Standard Accessors (Getters/Setters)
     void SetDay(short Day);
     short GetDay() const;
@@ -36,6 +40,15 @@ public:
 
     void SetYear(short Year);
     short GetYear() const;
+
+	void SetHours(short Hours);
+    short GetHours() const;
+
+	void SetMinutes(short Minutes);
+	short GetMinutes() const;
+
+	void SetSeconds(short Seconds);
+	short GetSeconds() const;
 
     // Methods
     void Print();
@@ -92,8 +105,6 @@ public:
     short DaysFromTheBeginingOfTheYear() const;
 
     static Date GetDateFromDayOrderInYear(short DateOrderInYear, short Year);
-
-    void AddDays(short Days);
 
     static bool IsDate1BeforeDate2(Date Date1, Date Date2);
     bool IsDateBeforeDate2(Date Date2) const;

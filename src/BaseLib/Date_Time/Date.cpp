@@ -1,12 +1,17 @@
 #include "Date.h"
 
+#include <string>
+#include <vector>
+#include <ctime>
+#include "../String.h"
+
 namespace BaseLib
 {
 
-Date::Date() {
+Date::Date(){
     time_t t = time(0);
     struct tm now;
-	localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
+    localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
     _Day = now.tm_mday;
     _Month = now.tm_mon + 1;
     _Year = now.tm_year + 1900;
@@ -32,6 +37,11 @@ Date::Date(short DateOrderInYear, short Year) {
     _Day = Date1.GetDay();
     _Month = Date1.GetMonth();
     _Year = Date1.GetYear();
+}
+
+Date Date::GetCurrnetDate()
+{
+    return Date();
 }
 
 void Date::SetDay(short Day) { _Day = Day; }
@@ -178,22 +188,6 @@ Date Date::GetDateFromDayOrderInYear(short DateOrderInYear, short Year) {
         }
     }
     return Date;
-}
-
-void Date::AddDays(short Days) {
-    short RemainingDays = Days + DaysFromTheBeginingOfTheYear(_Day, _Month, _Year);
-    _Month = 1;
-    while (true) {
-        short MonthDays = NumberOfDaysInAMonth(_Month, _Year);
-        if (RemainingDays > MonthDays) {
-            RemainingDays -= MonthDays;
-            _Month++;
-            if (_Month > 12) { _Month = 1; _Year++; }
-        } else {
-            _Day = RemainingDays;
-            break;
-        }
-    }
 }
 
 bool Date::IsDate1BeforeDate2(Date Date1, Date Date2) {
