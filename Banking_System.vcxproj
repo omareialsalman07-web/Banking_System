@@ -118,6 +118,9 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Time.cpp" />
+    <ClCompile Include="src\GUI_Layer\UsersListWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UserDataWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateUserWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
@@ -153,6 +156,9 @@
     <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
     <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Time.h" />
+    <ClInclude Include="src\GUI_Layer\UsersListWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UserDataWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UpdateUserWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />

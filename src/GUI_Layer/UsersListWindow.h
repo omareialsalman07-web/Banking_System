@@ -11,7 +11,7 @@
 class UsersListWindow : public BaseWindow
 {
 public:
-	UsersListWindow(int index);
+	UsersListWindow(int index, class Application* App);
 	~UsersListWindow() = default;
 
 private:
@@ -24,5 +24,7 @@ private:
 	Repository<BankUser> repo;
 	std::vector<BankUser> _Users;
 	std::vector<BankUser> _GetAllUsers();
+
+	Application* _App;
 };
 

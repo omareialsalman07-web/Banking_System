@@ -1,6 +1,7 @@
 #include "App/Application.h"
 
-#include <GUI_Layer/AddClientWindow.h>
+#include <Core/BankUser.h>
+#include <Core/Repository.h>
 
 int main()
 {

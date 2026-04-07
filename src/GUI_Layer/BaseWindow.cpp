@@ -6,13 +6,13 @@
 #include <string>
 
 BaseWindow::BaseWindow(const std::string& title, bool canBeClosed, int ImWindowFlags)
-	: _Title(title), _isOpen(true), CanBeClosed(canBeClosed), imWindowFlags(ImWindowFlags)
+	: _Title(title), _isOpen(true), _CanBeClosed(canBeClosed), _ImWindowFlags(ImWindowFlags)
 {
 }
 
 void BaseWindow::Run()
 {
-    if (!ImGui::Begin(_Title.c_str(), (CanBeClosed? &_isOpen : nullptr), (ImGuiWindowFlags)imWindowFlags))
+    if (!ImGui::Begin(_Title.c_str(), (_CanBeClosed? &_isOpen : nullptr), (ImGuiWindowFlags)_ImWindowFlags))
     {
         ImGui::End();
         return;

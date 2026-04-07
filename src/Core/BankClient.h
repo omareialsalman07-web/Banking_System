@@ -9,7 +9,7 @@ class BankClient : public Person, public IPersistable
 {
 private:
 	std::string _AccountNumber;
-	double _Balance;
+	double _Balance = 0;
 
 public:
 	BankClient() = default;

@@ -30,7 +30,7 @@ private:
 	bool _ShowChangeClientPopup = false;
 	void _DrawChangeClientWindow();
 
-	class BankClient* _SelectedClient = nullptr;
+	BankClient* _SelectedClient = nullptr;
 
 	stClientData _ClientData;
 	bool _IsClientDataLoaded = false;

@@ -30,7 +30,7 @@ BaseLib::Time BaseLib::Time::GetCurrentTime()
 
 std::string BaseLib::Time::TimeToString() const
 {
-	return std::to_string(_Hours) + " : " + std::to_string(_Minutes) + " : " + std::to_string(_Seconds);
+	return std::to_string(_Hours) + ":" + std::to_string(_Minutes) + ":" + std::to_string(_Seconds);
 }
 
 void BaseLib::Time::AddOneHour(Time& time)

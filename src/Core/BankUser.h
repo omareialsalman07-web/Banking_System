@@ -12,11 +12,6 @@ private:
 	int _Permissions = 0;
 
 public:
-<<<<<<< HEAD
-	enum enPermissions {
-		eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
-		pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
-=======
 	static enum enPermissions {
 		eAdmin = 1,
 		pListClients = 2,
@@ -26,7 +21,6 @@ public:
 		pFindClient = 32,  
 		pTranactions = 64,  
 		pManageUsers = 128
->>>>>>> main
 	};
 
 	BankUser() = default;

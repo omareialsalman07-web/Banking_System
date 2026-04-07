@@ -16,8 +16,8 @@ protected:
     bool _ShowErrorPopup = false;
     bool _ShowInfoPopup = false;
 
-    bool CanBeClosed;
-	int imWindowFlags;
+    bool _CanBeClosed;
+	int _ImWindowFlags;
 
 public:
     BaseWindow(const std::string& title, bool canBeClosed = true, int ImWindowFlags = 0);

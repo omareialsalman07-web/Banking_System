@@ -3,3 +3,5 @@
 #include "AddClientWindow.h"
 #include "TransactionsWindow.h"
 #include "ManageUsersWindow.h"
+#include "UsersListWindow.h"
+#include "UpdateUserWindow.h"

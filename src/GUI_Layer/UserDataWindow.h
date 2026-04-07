@@ -1,49 +1,59 @@
 #pragma once
 #include "BaseWindow.h"
+#include <string>
 
-#include <iostream>
+struct stUserData
+{
+    std::string FirstName;
+    std::string LastName;
+    std::string Email;
+    std::string Phone;
+    std::string UserName;
+    std::string Password;
+};
 
 struct stPermission
 {
-	int value;
-
-	bool bAdmin;
-	bool bListClients;
-	bool bAddNewClient;
-	bool bDeleteClient;
-	bool bUpdateClients;
-	bool bFindClient;
-	bool bTransactions;
-	bool bManageUsers;
-
-	stPermission() : value(0), bAdmin(false), bListClients(false), bAddNewClient(false), bDeleteClient(false),
-		bUpdateClients(false), bFindClient(false), bTransactions(false), bManageUsers(false) {
-	}
+    bool bAdmin = false;
+    bool bListClients = false;
+    bool bAddNewClient = false;
+    bool bDeleteClient = false;
+    bool bUpdateClients = false;
+    bool bFindClient = false;
+    bool bTransactions = false;
+    bool bManageUsers = false;
 };
+
+class BankUser;
 
 class UserDataWindow : public BaseWindow
 {
 public:
-	UserDataWindow(std::string Title, class BankUser* User);
-	~UserDataWindow() = default;
+    UserDataWindow(const std::string& title, class BankUser* user = nullptr, bool* bShowUserDataWindow = nullptr);
+    virtual ~UserDataWindow();
 
 protected:
-	virtual void Render() override;
+    virtual void Render() override;
+    virtual void OnSubmit() = 0; // 🔥 key for extensibility
 
-	std::string FirstName;
-	std::string LastName;
-	std::string Email;
-	std::string Phone;
-	std::string UserName;
-	std::string Password;
+    void LoadFromUser(BankUser* user);
+    void LoadToUser();
 
-	stPermission Permissions = stPermission();
+protected:
+    stUserData UserData;
 
-	BankUser* User = nullptr;
+    stPermission Permissions;
 
-	void _DrawPermissionsCheckboxes();
+    virtual bool CanEditUserName() const { return true; }
 
-	bool _IsUserDataLoaded = false;
-	void _GetUserDataFromSelectedUser();
+	BankUser* GetUser() const { return _User; }
+
+private:
+    void _DrawPermissionsCheckboxes();
+    int _BuildPermissionsMask() const;
+
+    bool _IsLoaded = false;
+    BankUser* _User = nullptr;
+
+    bool* bShowUserDataWindow = nullptr;
 };
-

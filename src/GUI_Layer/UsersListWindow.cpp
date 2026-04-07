@@ -1,15 +1,20 @@
 #include "UsersListWindow.h"
 
 #include "Im_Gui.h"
+#include "GUI_Layer.h"
+#include <App/Application.h>
 
-UsersListWindow::UsersListWindow(int index) : BaseWindow("Users List : " + std::to_string(index)),
+UsersListWindow::UsersListWindow(int index, Application* App) : BaseWindow("Users List : " + std::to_string(index)),
     repo(Repository<BankUser>::GetStandard_UsersFileName())
 {
+	_App = App;
+    _Users = _GetAllUsers();
 }
 
 void UsersListWindow::Render()
 {
 	DrawScreenHeader("Users List");
+    _DrawUsersList();
 }
 
 void UsersListWindow::_DrawUsersList()
@@ -30,8 +35,8 @@ void UsersListWindow::_DrawUsersList()
         ImGui::TableSetupColumn("Last Name");
         ImGui::TableSetupColumn("Email");
         ImGui::TableSetupColumn("Phone");
-        ImGui::TableSetupColumn("Account Number");
-        ImGui::TableSetupColumn("Balance");
+        ImGui::TableSetupColumn("User Name");
+        ImGui::TableSetupColumn("Password");
         ImGui::TableHeadersRow();
 
         for (int i = 0; i < _Users.size(); i++)
@@ -44,19 +49,23 @@ void UsersListWindow::_DrawUsersList()
             ImGui::TableSetColumnIndex(4); ImGui::Text("%s", _Users[i].GetUserName().c_str());
 
             ImGui::TableSetColumnIndex(5);
-            ImGui::Text("%s", _Users[i].GetPassword());
+            ImGui::Text("%s", _Users[i].GetPassword().c_str());
             ImGui::PushID(i);
             ImGui::SameLine();
             if (ImGui::Button("Change User"))
             {
                 _ShowChangeUserPopup = true;
-
-                _SelectedUser = &_Users[i];
+                if(_App)
+                {
+                    _App->CreateWindow(std::make_unique<UpdateUserWindow>("Update User : " + std::to_string(_App->GetWindowsCount()), &_Users[i], &_ShowChangeUserPopup));
+				}
             }
-            if (ImGui::ColorButton("X", ImVec4(1.0f, 0.0f, 0.0f, 1)))
+            ImGui::SameLine();
+            if (ImGui::Button("X"))
             {
                 repo.Delete(_Users[i].GetUserName());
-				_Users = _GetAllUsers(); // Refresh the list after deletion
+                _Users = _GetAllUsers(); // Refresh the list after 
+                ShowMessage("User Deleted Successfully");
             }
             ImGui::PopID();
         }
@@ -65,33 +74,12 @@ void UsersListWindow::_DrawUsersList()
     }
 }
 
-void UsersListWindow::_GetUserDataFromSelectedUser()
-{
-    if (!_SelectedUser)
-    {
-        _UserData = stUserData();
-        _IsUserDataLoaded = false;
-        return;
-    }
-
-    _UserData.FirstName = _SelectedUser->GetFirstName();
-    _UserData.LastName = _SelectedUser->GetLastName();
-    _UserData.Email = _SelectedUser->GetEmail();
-    _UserData.Phone = _SelectedUser->GetPhone();
-    _UserData.UserName = _SelectedUser->GetUserName();
-    _UserData.Password = _SelectedUser->GetPassword();
-    _UserData.Permissions.value = _SelectedUser->GetPermissions();
-    _IsUserDataLoaded = true;
-}
-
-void UsersListWindow::_SaveUser()
-{
-}
-
 std::vector<BankUser> UsersListWindow::_GetAllUsers()
 {
-    if(_ShowChangeUserPopup)
-		return _Users; // if the change user popup is open, return the current list of users without refreshing it from the file, to avoid losing unsaved changes
-
+    if (_ShowChangeUserPopup)
+    {
+        ShowError("Close Update User Window Before Refreshing Users List");
+        return _Users; // if the change user popup is open, return the current list of users without refreshing it from the file, to avoid losing unsaved changes
+    }
 	return repo.LoadAll();
 }
