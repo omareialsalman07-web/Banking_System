@@ -37,7 +37,7 @@ protected:
     virtual void OnSubmit() = 0; // 🔥 key for extensibility
 
     void LoadFromUser(BankUser* user);
-    void LoadToUser();
+    void LoadToUser(BankUser* user);
 
 protected:
     stUserData UserData;
@@ -46,7 +46,7 @@ protected:
 
     virtual bool CanEditUserName() const { return true; }
 
-	BankUser* GetUser() const { return _User; }
+    BankUser* GetUser() const { return _User; }
 
 private:
     void _DrawPermissionsCheckboxes();

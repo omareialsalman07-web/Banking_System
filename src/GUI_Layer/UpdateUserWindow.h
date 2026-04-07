@@ -5,7 +5,7 @@
 class UpdateUserWindow : public UserDataWindow
 {
 public:
-	UpdateUserWindow(const std::string& title, class BankUser* user, bool* bShowUserDataWindow = nullptr);
+	UpdateUserWindow(int index, class BankUser* user, bool* bShowUserDataWindow = nullptr);
 	virtual ~UpdateUserWindow() = default;
 
 private:

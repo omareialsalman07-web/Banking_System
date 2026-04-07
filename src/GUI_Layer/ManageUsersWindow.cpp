@@ -23,6 +23,9 @@ void ManageUsersWindow::Render()
 	}
 	if (ImGui::Button("Add New User", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		ShowMessage("Not implemented yet");
+		if (_App)
+		{
+			_App->CreateWindow(std::make_unique<AddUserWindow>(_App->GetWindowsCount()));
+		}
 	}
 }

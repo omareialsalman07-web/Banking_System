@@ -3,7 +3,8 @@
 #include <Core/BankUser.h>
 #include <Core/Repository.h>
 
-UpdateUserWindow::UpdateUserWindow(const std::string& title, BankUser* user, bool* bShowUserDataWindow) : UserDataWindow(title, user, bShowUserDataWindow)
+UpdateUserWindow::UpdateUserWindow(int index, BankUser* user, bool* bShowUserDataWindow) : 
+	UserDataWindow("Uppdate User Window : " + std::to_string(index), user, bShowUserDataWindow)
 {
 
 }
@@ -16,6 +17,7 @@ void UpdateUserWindow::OnSubmit()
 		return;
 	}
 
+	LoadToUser(GetUser());
 	Repository<BankUser> userRepo(Repository<BankUser>::GetStandard_UsersFileName());
 	if (userRepo.Update(*GetUser()))
 	{

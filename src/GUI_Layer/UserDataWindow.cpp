@@ -3,11 +3,14 @@
 #include <Core/BankUser.h>
 
 UserDataWindow::UserDataWindow(const std::string& title, BankUser* user, bool* bShowUserDataWindow)
-    : BaseWindow(title), _User(user)
+    : BaseWindow(title, true, 0), _User(user)
 {
+    this->bShowUserDataWindow = bShowUserDataWindow;
+
     if (bShowUserDataWindow)
     {
         *bShowUserDataWindow = true;
+        std::cout << "Created User data Window\n";
     }
 }
 
@@ -16,7 +19,9 @@ UserDataWindow::~UserDataWindow()
     if (bShowUserDataWindow)
     {
         *bShowUserDataWindow = false;
+        std::cout << "Destroyed User data Window\n";
     }
+
 }
 
 void UserDataWindow::Render()
@@ -47,7 +52,6 @@ void UserDataWindow::Render()
 
     if (ImGui::Button("Save", ImVec2(120, 0)))
     {
-        LoadToUser();
         OnSubmit();
     }
     ImGui::SameLine();
@@ -112,15 +116,15 @@ void UserDataWindow::LoadFromUser(BankUser* user)
     Permissions.bManageUsers = (perms & BankUser::pManageUsers);
 }
 
-void UserDataWindow::LoadToUser()
+void UserDataWindow::LoadToUser(BankUser* user)
 {
-    if (_User)
+    if (user)
     {
-        _User->SetFirstName(UserData.FirstName);
-        _User->SetLastName(UserData.LastName);
-        _User->SetEmail(UserData.Email);
-        _User->SetPhone(UserData.Phone);
-        _User->SetPassword(UserData.Password);
-        _User->SetPermissions(_BuildPermissionsMask());
+        user->SetFirstName(UserData.FirstName);
+        user->SetLastName(UserData.LastName);
+        user->SetEmail(UserData.Email);
+        user->SetPhone(UserData.Phone);
+        user->SetPassword(UserData.Password);
+        user->SetPermissions(_BuildPermissionsMask());
     }
 }

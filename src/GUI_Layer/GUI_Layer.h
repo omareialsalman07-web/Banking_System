@@ -5,3 +5,4 @@
 #include "ManageUsersWindow.h"
 #include "UsersListWindow.h"
 #include "UpdateUserWindow.h"
+#include "AddUserWindow.h"

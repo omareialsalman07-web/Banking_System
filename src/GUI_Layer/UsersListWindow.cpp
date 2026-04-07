@@ -54,10 +54,9 @@ void UsersListWindow::_DrawUsersList()
             ImGui::SameLine();
             if (ImGui::Button("Change User"))
             {
-                _ShowChangeUserPopup = true;
                 if(_App)
                 {
-                    _App->CreateWindow(std::make_unique<UpdateUserWindow>("Update User : " + std::to_string(_App->GetWindowsCount()), &_Users[i], &_ShowChangeUserPopup));
+                    _App->CreateWindow(std::make_unique<UpdateUserWindow>(_App->GetWindowsCount(), &_Users[i], &_ShowChangeUserPopup));
 				}
             }
             ImGui::SameLine();

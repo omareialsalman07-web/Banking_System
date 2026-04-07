@@ -93,6 +93,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI_Layer\AddUserWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\AddClientWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\CleintListWindow.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="src\GUI_Layer\UpdateUserWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI_Layer\AddUserWindow.h" />
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
     <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
     <ClInclude Include="src\GUI_Layer\CleintListWindow.h" />
