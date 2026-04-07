@@ -163,15 +163,13 @@ void Application::RenderSub_Windows()
 	   [](const std::unique_ptr<BaseWindow>& window) { return !window->IsOpen(); }),
         vSubWindwos.end());
 
-   for (const std::unique_ptr<BaseWindow>& window : vSubWindwos)
+   for (int i = 0; i < vSubWindwos.size(); i++)
    {
-       if (window)
+       if (vSubWindwos[i].get()->IsOpen())
        {
-           if (window->IsOpen())
-               window->Run();
+           vSubWindwos[i].get()->Run();
        }
    }
-
 }
 
 void Application::Run()
