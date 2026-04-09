@@ -1,217 +1,228 @@
 #pragma once
 
 #include <iostream>
-#include <string>
-#include <vector>
-#include <ctime>
-#include "../String.h"
 
 using namespace std;
 
 namespace BaseLib
 {
+    class stDate
+    {
+        short _Hours = 1;
+        short _Minutes = 0;
+        short _Seconds = 0;
+    };
 
-class Date
-{
-private:
-    short _Day = 1;
-    short _Month = 1;
-    short _Year = 1900;
+    class Date
+    {
+    private:
+        short _Day = 1;
+        short _Month = 1;
+        short _Year = 1900;
 
-public:
-    enum enDateCompare { Before = -1, Equal = 0, After = 1 };
+    public:
+        enum enDateCompare { Before = -1, Equal = 0, After = 1 };
 
-    // Constructors
-    Date();
-    Date(string sDate);
-    Date(short Day, short Month, short Year);
-    Date(short DateOrderInYear, short Year);
+        // Constructors
+        Date();
+        Date(string sDate);
+        Date(short Day, short Month, short Year);
+        Date(short DateOrderInYear, short Year);
 
-    // Standard Accessors (Getters/Setters)
-    void SetDay(short Day);
-    short GetDay() const;
+        static Date GetCurrnetDate();
 
-    void SetMonth(short Month);
-    short GetMonth() const;
+        // Standard Accessors (Getters/Setters)
+        void SetDay(short Day);
+        short GetDay() const;
 
-    void SetYear(short Year);
-    short GetYear() const;
+        void SetMonth(short Month);
+        short GetMonth() const;
 
-    // Methods
-    void Print();
-    static Date GetSystemDate();
-    static bool IsValidDate(Date Date);
-    bool IsValid();
-    static string DateToString(Date Date);
-    string DateToString();
-    
-    static bool isLeapYear(short Year);
-    bool isLeapYear() const;
+        void SetYear(short Year);
+        short GetYear() const;
 
-    static short NumberOfDaysInAYear(short Year);
-    short NumberOfDaysInAYear() const;
+        void SetHours(short Hours);
+        short GetHours() const;
 
-    static short NumberOfHoursInAYear(short Year);
-    short NumberOfHoursInAYear() const;
+        void SetMinutes(short Minutes);
+        short GetMinutes() const;
 
-    static int NumberOfMinutesInAYear(short Year);
-    int NumberOfMinutesInAYear() const;
+        void SetSeconds(short Seconds);
+        short GetSeconds() const;
 
-    static int NumberOfSecondsInAYear(short Year);
-    int NumberOfSecondsInAYear() const;
+        // Methods
+        void Print();
+        static Date GetSystemDate();
+        static bool IsValidDate(Date Date);
+        bool IsValid();
+        static string DateToString(Date Date);
+        string DateToString();
 
-    static short NumberOfDaysInAMonth(short Month, short Year);
-    short NumberOfDaysInAMonth() const;
+        static bool isLeapYear(short Year);
+        bool isLeapYear() const;
 
-    static short NumberOfHoursInAMonth(short Month, short Year);
-    short NumberOfHoursInAMonth() const;
+        static short NumberOfDaysInAYear(short Year);
+        short NumberOfDaysInAYear() const;
 
-    static int NumberOfMinutesInAMonth(short Month, short Year);
-    int NumberOfMinutesInAMonth() const;
+        static short NumberOfHoursInAYear(short Year);
+        short NumberOfHoursInAYear() const;
 
-    static int NumberOfSecondsInAMonth(short Month, short Year);
-    int NumberOfSecondsInAMonth() const;
+        static int NumberOfMinutesInAYear(short Year);
+        int NumberOfMinutesInAYear() const;
 
-    static short DayOfWeekOrder(short Day, short Month, short Year);
-    short DayOfWeekOrder() const;
+        static int NumberOfSecondsInAYear(short Year);
+        int NumberOfSecondsInAYear() const;
 
-    static string DayShortName(short DayOfWeekOrder);
-    static string DayShortName(short Day, short Month, short Year);
-    string DayShortName() const;
+        static short NumberOfDaysInAMonth(short Month, short Year);
+        short NumberOfDaysInAMonth() const;
 
-    static string MonthShortName(short MonthNumber);
-    string MonthShortName() const;
+        static short NumberOfHoursInAMonth(short Month, short Year);
+        short NumberOfHoursInAMonth() const;
 
-    static void PrintMonthCalendar(short Month, short Year);
-    void PrintMonthCalendar();
+        static int NumberOfMinutesInAMonth(short Month, short Year);
+        int NumberOfMinutesInAMonth() const;
 
-    static void PrintYearCalendar(int Year);
-    void PrintYearCalendar();
+        static int NumberOfSecondsInAMonth(short Month, short Year);
+        int NumberOfSecondsInAMonth() const;
 
-    static short DaysFromTheBeginingOfTheYear(short Day, short Month, short Year);
-    short DaysFromTheBeginingOfTheYear() const;
+        static short DayOfWeekOrder(short Day, short Month, short Year);
+        short DayOfWeekOrder() const;
 
-    static Date GetDateFromDayOrderInYear(short DateOrderInYear, short Year);
+        static string DayShortName(short DayOfWeekOrder);
+        static string DayShortName(short Day, short Month, short Year);
+        string DayShortName() const;
 
-    void AddDays(short Days);
+        static string MonthShortName(short MonthNumber);
+        string MonthShortName() const;
 
-    static bool IsDate1BeforeDate2(Date Date1, Date Date2);
-    bool IsDateBeforeDate2(Date Date2) const;
+        static void PrintMonthCalendar(short Month, short Year);
+        void PrintMonthCalendar();
 
-    static bool IsDate1EqualDate2(Date Date1, Date Date2);
-    bool IsDateEqualDate2(Date Date2) const;
+        static void PrintYearCalendar(int Year);
+        void PrintYearCalendar();
 
-    static bool IsLastDayInMonth(Date Date);
-    bool IsLastDayInMonth() const;
+        static short DaysFromTheBeginingOfTheYear(short Day, short Month, short Year);
+        short DaysFromTheBeginingOfTheYear() const;
 
-    static bool IsLastMonthInYear(short Month);
+        static Date GetDateFromDayOrderInYear(short DateOrderInYear, short Year);
 
-    static Date AddOneDay(Date Date);
-    void AddOneDay();
+        static bool IsDate1BeforeDate2(Date Date1, Date Date2);
+        bool IsDateBeforeDate2(Date Date2) const;
 
-    static void SwapDates(Date& Date1, Date& Date2);
+        static bool IsDate1EqualDate2(Date Date1, Date Date2);
+        bool IsDateEqualDate2(Date Date2) const;
 
-    static int GetDifferenceInDays(Date Date1, Date Date2, bool IncludeEndDay = false);
-    int GetDifferenceInDays(Date Date2, bool IncludeEndDay = false) const;
+        static bool IsLastDayInMonth(Date Date);
+        bool IsLastDayInMonth() const;
 
-    static short CalculateMyAgeInDays(Date DateOfBirth);
+        static bool IsLastMonthInYear(short Month);
 
-    static Date IncreaseDateByOneWeek(Date& Date);
-    void IncreaseDateByOneWeek();
+        static Date AddOneDay(Date Date);
+        void AddOneDay();
 
-    static Date IncreaseDateByXWeeks(short Weeks, Date& Date);
-    void IncreaseDateByXWeeks(short Weeks);
+        static void SwapDates(Date& Date1, Date& Date2);
 
-    static Date IncreaseDateByOneMonth(Date& Date);
-    void IncreaseDateByOneMonth();
+        static int GetDifferenceInDays(Date Date1, Date Date2, bool IncludeEndDay = false);
+        int GetDifferenceInDays(Date Date2, bool IncludeEndDay = false) const;
 
-    static Date IncreaseDateByXDays(short Days, Date& Date);
-    void IncreaseDateByXDays(short Days);
+        static short CalculateMyAgeInDays(Date DateOfBirth);
 
-    static Date IncreaseDateByXMonths(short Months, Date& Date);
-    void IncreaseDateByXMonths(short Months);
+        static Date IncreaseDateByOneWeek(Date& Date);
+        void IncreaseDateByOneWeek();
 
-    static Date IncreaseDateByOneYear(Date& Date);
-    void IncreaseDateByOneYear();
+        static Date IncreaseDateByXWeeks(short Weeks, Date& Date);
+        void IncreaseDateByXWeeks(short Weeks);
 
-    static Date IncreaseDateByXYears(short Years, Date& Date);
-    void IncreaseDateByXYears(short Years);
+        static Date IncreaseDateByOneMonth(Date& Date);
+        void IncreaseDateByOneMonth();
 
-    static Date IncreaseDateByOneDecade(Date& Date);
-    void IncreaseDateByOneDecade();
+        static Date IncreaseDateByXDays(short Days, Date& Date);
+        void IncreaseDateByXDays(short Days);
 
-    static Date IncreaseDateByXDecades(short Decade, Date& Date);
-    void IncreaseDateByXDecades(short Decade);
+        static Date IncreaseDateByXMonths(short Months, Date& Date);
+        void IncreaseDateByXMonths(short Months);
 
-    static Date IncreaseDateByOneCentury(Date& Date);
-    void IncreaseDateByOneCentury();
+        static Date IncreaseDateByOneYear(Date& Date);
+        void IncreaseDateByOneYear();
 
-    static Date IncreaseDateByOneMillennium(Date& Date);
-    void IncreaseDateByOneMillennium();
+        static Date IncreaseDateByXYears(short Years, Date& Date);
+        void IncreaseDateByXYears(short Years);
 
-    static Date DecreaseDateByOneDay(Date Date);
-    void DecreaseDateByOneDay();
+        static Date IncreaseDateByOneDecade(Date& Date);
+        void IncreaseDateByOneDecade();
 
-    static Date DecreaseDateByOneWeek(Date& Date);
-    void DecreaseDateByOneWeek();
+        static Date IncreaseDateByXDecades(short Decade, Date& Date);
+        void IncreaseDateByXDecades(short Decade);
 
-    static Date DecreaseDateByXWeeks(short Weeks, Date& Date);
-    void DecreaseDateByXWeeks(short Weeks);
+        static Date IncreaseDateByOneCentury(Date& Date);
+        void IncreaseDateByOneCentury();
 
-    static Date DecreaseDateByOneMonth(Date& Date);
-    void DecreaseDateByOneMonth();
+        static Date IncreaseDateByOneMillennium(Date& Date);
+        void IncreaseDateByOneMillennium();
 
-    static Date DecreaseDateByXDays(short Days, Date& Date);
-    void DecreaseDateByXDays(short Days);
+        static Date DecreaseDateByOneDay(Date Date);
+        void DecreaseDateByOneDay();
 
-    static Date DecreaseDateByXMonths(short Months, Date& Date);
-    void DecreaseDateByXMonths(short Months);
+        static Date DecreaseDateByOneWeek(Date& Date);
+        void DecreaseDateByOneWeek();
 
-    static Date DecreaseDateByOneYear(Date& Date);
-    void DecreaseDateByOneYear();
+        static Date DecreaseDateByXWeeks(short Weeks, Date& Date);
+        void DecreaseDateByXWeeks(short Weeks);
 
-    static Date DecreaseDateByXYears(short Years, Date& Date);
-    void DecreaseDateByXYears(short Years);
+        static Date DecreaseDateByOneMonth(Date& Date);
+        void DecreaseDateByOneMonth();
 
-    static Date DecreaseDateByOneDecade(Date& Date);
-    void DecreaseDateByOneDecade();
+        static Date DecreaseDateByXDays(short Days, Date& Date);
+        void DecreaseDateByXDays(short Days);
 
-    static Date DecreaseDateByXDecades(short Decades, Date& Date);
-    void DecreaseDateByXDecades(short Decades);
+        static Date DecreaseDateByXMonths(short Months, Date& Date);
+        void DecreaseDateByXMonths(short Months);
 
-    static Date DecreaseDateByOneCentury(Date& Date);
-    void DecreaseDateByOneCentury();
+        static Date DecreaseDateByOneYear(Date& Date);
+        void DecreaseDateByOneYear();
 
-    static Date DecreaseDateByOneMillennium(Date& Date);
-    void DecreaseDateByOneMillennium();
+        static Date DecreaseDateByXYears(short Years, Date& Date);
+        void DecreaseDateByXYears(short Years);
 
-    static short IsEndOfWeek(Date Date);
-    short IsEndOfWeek() const;
+        static Date DecreaseDateByOneDecade(Date& Date);
+        void DecreaseDateByOneDecade();
 
-    static bool IsWeekEnd(Date Date);
-    bool IsWeekEnd() const;
+        static Date DecreaseDateByXDecades(short Decades, Date& Date);
+        void DecreaseDateByXDecades(short Decades);
 
-    static bool IsBusinessDay(Date Date);
-    bool IsBusinessDay() const;
+        static Date DecreaseDateByOneCentury(Date& Date);
+        void DecreaseDateByOneCentury();
 
-    static short DaysUntilTheEndOfWeek(Date Date);
-    short DaysUntilTheEndOfWeek() const;
+        static Date DecreaseDateByOneMillennium(Date& Date);
+        void DecreaseDateByOneMillennium();
 
-    static short DaysUntilTheEndOfMonth(Date Date1);
-    short DaysUntilTheEndOfMonth() const;
+        static short IsEndOfWeek(Date Date);
+        short IsEndOfWeek() const;
 
-    static short DaysUntilTheEndOfYear(Date Date1);
-    short DaysUntilTheEndOfYear() const;
+        static bool IsWeekEnd(Date Date);
+        bool IsWeekEnd() const;
 
-    static short CalculateBusinessDays(Date DateFrom, Date DateTo);
-    static short CalculateVacationDays(Date DateFrom, Date DateTo);
-    static Date CalculateVacationReturnDate(Date DateFrom, short VacationDays);
+        static bool IsBusinessDay(Date Date);
+        bool IsBusinessDay() const;
 
-    static bool IsDate1AfterDate2(Date Date1, Date Date2);
-    bool IsDateAfterDate2(Date Date2) const;
+        static short DaysUntilTheEndOfWeek(Date Date);
+        short DaysUntilTheEndOfWeek() const;
 
-    static enDateCompare CompareDates(Date Date1, Date Date2);
-    enDateCompare CompareDates(Date Date2) const;
-};
+        static short DaysUntilTheEndOfMonth(Date Date1);
+        short DaysUntilTheEndOfMonth() const;
+
+        static short DaysUntilTheEndOfYear(Date Date1);
+        short DaysUntilTheEndOfYear() const;
+
+        static short CalculateBusinessDays(Date DateFrom, Date DateTo);
+        static short CalculateVacationDays(Date DateFrom, Date DateTo);
+        static Date CalculateVacationReturnDate(Date DateFrom, short VacationDays);
+
+        static bool IsDate1AfterDate2(Date Date1, Date Date2);
+        bool IsDateAfterDate2(Date Date2) const;
+
+        static enDateCompare CompareDates(Date Date1, Date Date2);
+        enDateCompare CompareDates(Date Date2) const;
+    };
 
 } // namespace BaseLib
