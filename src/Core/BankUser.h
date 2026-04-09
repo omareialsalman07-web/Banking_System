@@ -12,7 +12,7 @@ private:
 	int _Permissions = 0;
 
 public:
-	static enum enPermissions {
+	enum enPermissions {
 		eAdmin = 1,
 		pListClients = 2,
 		pAddNewClient = 4,
