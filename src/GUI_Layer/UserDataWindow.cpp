@@ -10,7 +10,6 @@ UserDataWindow::UserDataWindow(const std::string& title, BankUser* user, bool* b
     if (bShowUserDataWindow)
     {
         *bShowUserDataWindow = true;
-        std::cout << "Created User data Window\n";
     }
 }
 
@@ -19,7 +18,6 @@ UserDataWindow::~UserDataWindow()
     if (bShowUserDataWindow)
     {
         *bShowUserDataWindow = false;
-        std::cout << "Destroyed User data Window\n";
     }
 
 }

@@ -6,3 +6,5 @@
 #include "UsersListWindow.h"
 #include "UpdateUserWindow.h"
 #include "AddUserWindow.h"
+#include "UpdateClientWindow.h"
+#include "AddClientWindow.h"

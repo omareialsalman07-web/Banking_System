@@ -18,7 +18,7 @@ void MainMenu::Render()
 
 	if (ImGui::Button("Client List", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		_App->CreateWindow(std::make_unique<CleintListWindow>(_App->GetWindowsCount()));
+		_App->CreateWindow(std::make_unique<CleintListWindow>(_App->GetWindowsCount(), _App));
 	}
 	if (ImGui::Button("Add New Client", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{

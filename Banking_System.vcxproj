@@ -93,6 +93,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI_Layer\ClientDataWidnow.cpp" />
     <ClCompile Include="src\GUI_Layer\AddUserWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\AddClientWindow.cpp" />
@@ -122,8 +123,10 @@
     <ClCompile Include="src\GUI_Layer\UsersListWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\UserDataWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\UpdateUserWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateClientWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI_Layer\ClientDataWidnow.h" />
     <ClInclude Include="src\GUI_Layer\AddUserWindow.h" />
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
     <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="src\GUI_Layer\UsersListWindow.h" />
     <ClInclude Include="src\GUI_Layer\UserDataWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateUserWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UpdateClientWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
