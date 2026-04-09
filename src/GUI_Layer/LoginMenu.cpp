@@ -60,6 +60,12 @@ void LoginMenu::Render()
 
 void LoginMenu::Login()
 {
+    if (_Username == "" || _Password == "")
+    {
+        ShowError("Please enter Password and Username!");
+        return;
+    }
+
 	Repository<BankUser> userRepo(Repository<BankUser>::GetStandard_UsersFileName());
 	BankUser bu = userRepo.Find(_Username);
 	if (!bu.IsEmpty() && bu.GetPassword() == _Password)
@@ -74,6 +80,10 @@ void LoginMenu::Login()
 	}
 	else
 	{
-		ShowError("Invalid username or password.");
+        if (_App)
+        {
+            _App->TakeLoginAttemp();
+            ShowError("Invalid username or password. (" + std::to_string(_App->GetLoginAttempsCount()) + ") Attemps left!");
+        }
 	}
 }

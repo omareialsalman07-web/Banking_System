@@ -186,6 +186,11 @@ void Application::Run()
         if (showConsole)
             console.Render(&showConsole);
 
+        if (_LoginAttempsCount <= 0)
+        {
+            glfwTerminate();
+        }
+
 
         EndFrame();
     }
@@ -196,7 +201,8 @@ void Application::SetAppState(enApplicationState appState)
 {
 	_AppState = appState;
 
-	vSubWindwos.erase(vSubWindwos.begin(), vSubWindwos.end()); // Clear all sub-windows when changing state. We don't want to keep them around if we log out for example.
+    vSubWindwos.erase(vSubWindwos.begin(), vSubWindwos.end()); // Clear all sub-windows when changing state. We don't want to keep them around if we log out for example.
+    _LoginAttempsCount = 3;
 }
 
 void Application::CreateWindow(std::unique_ptr<BaseWindow> window)

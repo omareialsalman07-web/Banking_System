@@ -31,7 +31,6 @@ private:
     void RenderWindows();
     void RenderSub_Windows();
 
-
     struct GLFWwindow* window;
 
     bool showConsole = true;
@@ -43,11 +42,11 @@ private:
 
     enApplicationState _AppState;
 
-
     BankUser CurrentUser;
 
 	std::vector<std::unique_ptr<class BaseWindow>> vSubWindwos;
 
+    unsigned int _LoginAttempsCount = 3;
 public:
     void SetAppState(enApplicationState appState);
 
@@ -56,4 +55,7 @@ public:
 
     void CreateWindow(std::unique_ptr<BaseWindow> window);
 	inline int GetWindowsCount() const { return static_cast<int>(vSubWindwos.size()); }
+
+    void TakeLoginAttemp() { --_LoginAttempsCount; }
+    inline unsigned int GetLoginAttempsCount() { return _LoginAttempsCount; }
 };
