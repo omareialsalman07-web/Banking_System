@@ -5,6 +5,9 @@
 #include <string>
 #include <algorithm>
 
+#include<BaseLib/Date_Time/Date.h>
+#include<BaseLib/Date_Time/Time.h>
+
 template <class T>
 class Repository
 {
@@ -99,6 +102,18 @@ public:
             list.end());
 
         SaveAll(list);
+    }
+
+    void AddLoginRegister(const T& obj, std::string logFileName)
+    {
+        std::string line = BaseLib::Date::GetCurrnetDate().DateToString() + " - " + BaseLib::Time::GetCurrentTime().TimeToString();
+        line = line + "#//#" + obj.ToLine();
+
+        std::fstream file(logFileName, std::ios::out);
+        if(file.is_open())
+            file << line;
+
+        file.close();
     }
 
     inline static std::string GetStandard_ClientsFileName() { return "CLIENTS.txt"; }

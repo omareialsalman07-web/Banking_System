@@ -88,6 +88,7 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="Banking_System.slnx" />
+<<<<<<< HEAD
     <None Include="Dependencies\lib-vc2022\glfw3.dll" />
     <None Include="imgui.ini" />
     <None Include="README.md" />
@@ -104,6 +105,13 @@
     <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
     <ClCompile Include="src\App\Console.cpp" />
     <ClCompile Include="src\App\Application.cpp" />
+=======
+    <None Include="LogRegisters" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BaseLib\Date_Time\Time.cpp" />
+>>>>>>> Core
     <ClCompile Include="src\Core\BankUser.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Date.cpp" />
@@ -149,6 +157,7 @@
     <ClInclude Include="src\Core\IPersistable.h" />
     <ClInclude Include="src\Core\Person.h" />
     <ClInclude Include="src\Core\Repository.h" />
+<<<<<<< HEAD
     <ClInclude Include="src\GUI_Layer\imgui\imconfig.h" />
     <ClInclude Include="src\GUI_Layer\imgui\imgui.h" />
     <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_glfw.h" />
@@ -165,6 +174,9 @@
     <ClInclude Include="src\GUI_Layer\UserDataWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateUserWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateClientWindow.h" />
+=======
+    <ClInclude Include="src\BaseLib\Date_Time\Time.h" />
+>>>>>>> Core
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
