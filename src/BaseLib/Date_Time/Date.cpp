@@ -8,23 +8,7 @@
 namespace BaseLib
 {
 
-<<<<<<< HEAD
-Date::Date(){
-    time_t t = time(0);
-    struct tm now;
-    localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
-    _Day = now.tm_mday;
-    _Month = now.tm_mon + 1;
-    _Year = now.tm_year + 1900;
-}
 
-Date::Date(string sDate) {
-    vector <string> vDate = String::Split(sDate, "/");
-    if(vDate.size() >= 3) {
-        _Day = stoi(vDate[0]);
-        _Month = stoi(vDate[1]);
-        _Year = stoi(vDate[2]);
-=======
     Date::Date() {
         time_t t = time(0);
         struct tm now;
@@ -32,189 +16,17 @@ Date::Date(string sDate) {
         _Day = now.tm_mday;
         _Month = now.tm_mon + 1;
         _Year = now.tm_year + 1900;
->>>>>>> Core
     }
 
-<<<<<<< HEAD
-Date::Date(short Day, short Month, short Year) {
-    _Day = Day;
-    _Month = Month;
-    _Year = Year;
-}
-
-Date::Date(short DateOrderInYear, short Year) {
-    Date Date1 = GetDateFromDayOrderInYear(DateOrderInYear, Year);
-    _Day = Date1.GetDay();
-    _Month = Date1.GetMonth();
-    _Year = Date1.GetYear();
-}
-
-Date Date::GetCurrnetDate()
-{
-    return Date();
-}
-
-void Date::SetDay(short Day) { _Day = Day; }
-short Date::GetDay() const { return _Day; }
-
-void Date::SetMonth(short Month) { _Month = Month; }
-short Date::GetMonth() const { return _Month; }
-
-void Date::SetYear(short Year) { _Year = Year; }
-short Date::GetYear() const { return _Year; }
-
-void Date::Print() { cout << DateToString() << endl; }
-
-Date Date::GetSystemDate() {
-    time_t t = time(0);
-    struct tm now;
-    localtime_s(&now, &t);
-    return Date(now.tm_mday, now.tm_mon + 1, now.tm_year + 1900);
-}
-
-bool Date::IsValidDate(Date Date) {
-    if (Date.GetMonth() < 1 || Date.GetMonth() > 12) return false;
-    short DaysInMonth = NumberOfDaysInAMonth(Date.GetMonth(), Date.GetYear());
-    return (Date.GetDay() >= 1 && Date.GetDay() <= DaysInMonth);
-}
-
-bool Date::IsValid() { return IsValidDate(*this); }
-
-string Date::DateToString(Date Date) {
-    return to_string(Date.GetDay()) + "/" + to_string(Date.GetMonth()) + "/" + to_string(Date.GetYear());
-}
-
-string Date::DateToString() { return DateToString(*this); }
-
-bool Date::isLeapYear(short Year) {
-    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
-}
-
-bool Date::isLeapYear() const { return isLeapYear(_Year); }
-
-short Date::NumberOfDaysInAYear(short Year) { return isLeapYear(Year) ? 366 : 365; }
-short Date::NumberOfDaysInAYear() const { return NumberOfDaysInAYear(_Year); }
-
-short Date::NumberOfHoursInAYear(short Year) { return NumberOfDaysInAYear(Year) * 24; }
-short Date::NumberOfHoursInAYear() const { return NumberOfHoursInAYear(_Year); }
-
-int Date::NumberOfMinutesInAYear(short Year) { return NumberOfHoursInAYear(Year) * 60; }
-int Date::NumberOfMinutesInAYear() const { return NumberOfMinutesInAYear(_Year); }
-
-int Date::NumberOfSecondsInAYear(short Year) { return NumberOfMinutesInAYear(Year) * 60; }
-int Date::NumberOfSecondsInAYear() const { return NumberOfSecondsInAYear(_Year); }
-
-short Date::NumberOfDaysInAMonth(short Month, short Year) {
-    if (Month < 1 || Month > 12) return 0;
-    int days[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-    return (Month == 2) ? (isLeapYear(Year) ? 29 : 28) : days[Month - 1];
-}
-
-short Date::NumberOfDaysInAMonth() const { return NumberOfDaysInAMonth(_Month, _Year); }
-
-short Date::NumberOfHoursInAMonth(short Month, short Year) { return NumberOfDaysInAMonth(Month, Year) * 24; }
-short Date::NumberOfHoursInAMonth() const { return NumberOfHoursInAMonth(_Month, _Year); }
-
-int Date::NumberOfMinutesInAMonth(short Month, short Year) { return NumberOfHoursInAMonth(Month, Year) * 60; }
-int Date::NumberOfMinutesInAMonth() const { return NumberOfMinutesInAMonth(_Month, _Year); }
-
-int Date::NumberOfSecondsInAMonth(short Month, short Year) { return NumberOfMinutesInAMonth(Month, Year) * 60; }
-int Date::NumberOfSecondsInAMonth() const { return NumberOfSecondsInAMonth(_Month, _Year); }
-
-short Date::DayOfWeekOrder(short Day, short Month, short Year) {
-    short a = (14 - Month) / 12;
-    short y = Year - a;
-    short m = Month + (12 * a) - 2;
-    return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
-}
-
-short Date::DayOfWeekOrder() const { return DayOfWeekOrder(_Day, _Month, _Year); }
-
-string Date::DayShortName(short DayOfWeekOrder) {
-    string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
-    return arrDayNames[DayOfWeekOrder];
-}
-
-string Date::DayShortName(short Day, short Month, short Year) {
-    return DayShortName(DayOfWeekOrder(Day, Month, Year));
-}
-
-string Date::DayShortName() const { return DayShortName(DayOfWeekOrder(_Day, _Month, _Year)); }
-
-string Date::MonthShortName(short MonthNumber) {
-    string Months[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-    return Months[MonthNumber - 1];
-}
-
-string Date::MonthShortName() const { return MonthShortName(_Month); }
-
-void Date::PrintMonthCalendar(short Month, short Year) {
-    int current = DayOfWeekOrder(1, Month, Year);
-    int NumberOfDays = NumberOfDaysInAMonth(Month, Year);
-    printf("\n  _______________%s_______________\n\n", MonthShortName(Month).c_str());
-    printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
-    int i;
-    for (i = 0; i < current; i++) printf("     ");
-    for (int j = 1; j <= NumberOfDays; j++) {
-        printf("%5d", j);
-        if (++i == 7) { i = 0; printf("\n"); }
-    }
-    printf("\n  _________________________________\n");
-}
-
-void Date::PrintMonthCalendar() { PrintMonthCalendar(_Month, _Year); }
-
-void Date::PrintYearCalendar(int Year) {
-    printf("\n  _________________________________\n\n");
-    printf("           Calendar - %d\n", Year);
-    printf("  _________________________________\n");
-    for (int i = 1; i <= 12; i++) PrintMonthCalendar(i, Year);
-}
-
-void Date::PrintYearCalendar() { PrintYearCalendar(_Year); }
-
-short Date::DaysFromTheBeginingOfTheYear(short Day, short Month, short Year) {
-    short TotalDays = 0;
-    for (int i = 1; i <= Month - 1; i++) TotalDays += NumberOfDaysInAMonth(i, Year);
-    TotalDays += Day;
-    return TotalDays;
-}
-
-short Date::DaysFromTheBeginingOfTheYear() const { return DaysFromTheBeginingOfTheYear(_Day, _Month, _Year); }
-
-Date Date::GetDateFromDayOrderInYear(short DateOrderInYear, short Year) {
-    Date Date;
-    short RemainingDays = DateOrderInYear;
-    Date.SetYear(Year);
-    Date.SetMonth(1);
-    while (true) {
-        short MonthDays = NumberOfDaysInAMonth(Date.GetMonth(), Year);
-        if (RemainingDays > MonthDays) {
-            RemainingDays -= MonthDays;
-            Date.SetMonth(Date.GetMonth() + 1);
-        } else {
-            Date.SetDay(RemainingDays);
-            break;
-=======
     Date::Date(string sDate) {
         vector <string> vDate = String::Split(sDate, "/");
         if (vDate.size() >= 3) {
             _Day = stoi(vDate[0]);
             _Month = stoi(vDate[1]);
             _Year = stoi(vDate[2]);
->>>>>>> Core
         }
     }
 
-<<<<<<< HEAD
-bool Date::IsDate1BeforeDate2(Date Date1, Date Date2) {
-    if (Date1.GetYear() < Date2.GetYear()) return true;
-    if (Date1.GetYear() > Date2.GetYear()) return false;
-    if (Date1.GetMonth() < Date2.GetMonth()) return true;
-    if (Date1.GetMonth() > Date2.GetMonth()) return false;
-    return Date1.GetDay() < Date2.GetDay();
-}
-=======
     Date::Date(short Day, short Month, short Year) {
         _Day = Day;
         _Month = Month;
@@ -243,13 +55,6 @@ bool Date::IsDate1BeforeDate2(Date Date1, Date Date2) {
     short Date::GetYear() const { return _Year; }
 
     void Date::Print() { cout << DateToString() << endl; }
-
-    Date Date::GetSystemDate() {
-        time_t t = time(0);
-        struct tm now;
-        localtime_s(&now, &t);
-        return Date(now.tm_mday, now.tm_mon + 1, now.tm_year + 1900);
-    }
 
     bool Date::IsValidDate(Date Date) {
         if (Date.GetMonth() < 1 || Date.GetMonth() > 12) return false;
@@ -342,7 +147,6 @@ bool Date::IsDate1BeforeDate2(Date Date1, Date Date2) {
     }
 
     void Date::PrintMonthCalendar() { PrintMonthCalendar(_Month, _Year); }
->>>>>>> Core
 
     void Date::PrintYearCalendar(int Year) {
         printf("\n  _________________________________\n\n");
@@ -441,7 +245,7 @@ bool Date::IsDate1BeforeDate2(Date Date1, Date Date2) {
 
     int Date::GetDifferenceInDays(Date Date2, bool IncludeEndDay) const { return GetDifferenceInDays(*this, Date2, IncludeEndDay); }
 
-    short Date::CalculateMyAgeInDays(Date DateOfBirth) { return GetDifferenceInDays(DateOfBirth, Date::GetSystemDate(), true); }
+    short Date::CalculateMyAgeInDays(Date DateOfBirth) { return GetDifferenceInDays(DateOfBirth, Date::GetCurrnetDate(), true); }
 
     Date Date::IncreaseDateByOneWeek(Date& Date) {
         for (int i = 1; i <= 7; i++) Date = AddOneDay(Date);

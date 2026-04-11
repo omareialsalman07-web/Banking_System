@@ -6,13 +6,6 @@ using namespace std;
 
 namespace BaseLib
 {
-    class stDate
-    {
-        short _Hours = 1;
-        short _Minutes = 0;
-        short _Seconds = 0;
-    };
-
     class Date
     {
     private:
@@ -29,62 +22,24 @@ namespace BaseLib
         Date(short Day, short Month, short Year);
         Date(short DateOrderInYear, short Year);
 
-<<<<<<< HEAD
-    static Date GetCurrnetDate();
-
-    // Standard Accessors (Getters/Setters)
-    void SetDay(short Day);
-    short GetDay() const;
-=======
         static Date GetCurrnetDate();
->>>>>>> Core
 
-        // Standard Accessors (Getters/Setters)
+        // Getters / Setters
         void SetDay(short Day);
         short GetDay() const;
 
         void SetMonth(short Month);
         short GetMonth() const;
 
-<<<<<<< HEAD
-	void SetHours(short Hours);
-    short GetHours() const;
-
-	void SetMinutes(short Minutes);
-	short GetMinutes() const;
-
-	void SetSeconds(short Seconds);
-	short GetSeconds() const;
-
-    // Methods
-    void Print();
-    static Date GetSystemDate();
-    static bool IsValidDate(Date Date);
-    bool IsValid();
-    static string DateToString(Date Date);
-    string DateToString();
-    
-    static bool isLeapYear(short Year);
-    bool isLeapYear() const;
-=======
         void SetYear(short Year);
         short GetYear() const;
->>>>>>> Core
-
-        void SetHours(short Hours);
-        short GetHours() const;
-
-        void SetMinutes(short Minutes);
-        short GetMinutes() const;
-
-        void SetSeconds(short Seconds);
-        short GetSeconds() const;
 
         // Methods
         void Print();
-        static Date GetSystemDate();
+
         static bool IsValidDate(Date Date);
         bool IsValid();
+
         static string DateToString(Date Date);
         string DateToString();
 
@@ -122,16 +77,11 @@ namespace BaseLib
         static string DayShortName(short Day, short Month, short Year);
         string DayShortName() const;
 
-<<<<<<< HEAD
-    static bool IsDate1BeforeDate2(Date Date1, Date Date2);
-    bool IsDateBeforeDate2(Date Date2) const;
-=======
         static string MonthShortName(short MonthNumber);
         string MonthShortName() const;
 
         static void PrintMonthCalendar(short Month, short Year);
         void PrintMonthCalendar();
->>>>>>> Core
 
         static void PrintYearCalendar(int Year);
         void PrintYearCalendar();
