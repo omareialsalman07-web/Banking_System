@@ -6,13 +6,6 @@ using namespace std;
 
 namespace BaseLib
 {
-    class stDate
-    {
-        short _Hours = 1;
-        short _Minutes = 0;
-        short _Seconds = 0;
-    };
-
     class Date
     {
     private:

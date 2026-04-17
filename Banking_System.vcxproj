@@ -84,7 +84,6 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="Banking_System.slnx" />
-    <None Include="LogRegisters" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +95,7 @@
     <ClCompile Include="src\BaseLib\String.cpp" />
     <ClCompile Include="src\BaseLib\Util.cpp" />
     <ClCompile Include="src\Core\BankClient.cpp" />
+    <ClCompile Include="src\Core\UserLogRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\BankUser.h" />
@@ -108,9 +108,11 @@
     <ClInclude Include="src\Core\Person.h" />
     <ClInclude Include="src\Core\Repository.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Time.h" />
+    <ClInclude Include="src\Core\UserLogRegister.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
+    <Text Include="LogRegisters.txt" />
     <Text Include="USERS.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
