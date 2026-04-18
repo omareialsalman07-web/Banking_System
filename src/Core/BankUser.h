@@ -12,7 +12,7 @@ private:
 	int _Permissions = 0;
 
 public:
-	static enum enPermissions {
+	enum enPermissions {
 		eAdmin = 1,
 		pListClients = 2,
 		pAddNewClient = 4,
@@ -43,7 +43,7 @@ public:
 
 	std::string GetKey() const override { return _UserName; }
 	
-	bool IsEmpty() const { return _UserName == ""; }
+	bool IsEmpty() const override { return _UserName == ""; } 
 	static BankUser getEmptyUser();
 
 	bool HasPermission(enPermissions PermissionRequired) const;

@@ -7,9 +7,9 @@
 
 BaseLib::Time::Time()
 {
-    time_t t = time(0);
-    struct tm now;
-    localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
+	time_t t = time(0);
+	struct tm now;
+	localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
 
 	_Hours = now.tm_hour;
 	_Minutes = now.tm_min;
@@ -25,7 +25,7 @@ BaseLib::Time::Time(short Hours, short Minutes, short Seconds)
 
 BaseLib::Time BaseLib::Time::GetCurrentTime()
 {
-    return Time();
+	return Time();
 }
 
 std::string BaseLib::Time::TimeToString() const

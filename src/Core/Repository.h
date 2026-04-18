@@ -5,6 +5,9 @@
 #include <string>
 #include <algorithm>
 
+#include<BaseLib/Date_Time/Date.h>
+#include<BaseLib/Date_Time/Time.h>
+
 template <class T>
 class Repository
 {
@@ -103,4 +106,5 @@ public:
 
     inline static std::string GetStandard_ClientsFileName() { return "CLIENTS.txt"; }
     inline static std::string GetStandard_UsersFileName() { return "USERS.txt"; }
+    inline static std::string GetStandard_LogRegisterFileName() { return "LogRegisters.txt"; }
 };
