@@ -21,21 +21,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -45,11 +43,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\inet\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\inet\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -58,11 +56,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)Dependencies\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,30 +74,58 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)Dependencies\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="Banking_System.slnx" />
+    <None Include="imgui.ini" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\App\Application.cpp" />
+    <ClCompile Include="src\App\Console.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Time.cpp" />
     <ClCompile Include="src\Core\BankUser.cpp" />
-    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Date.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Period.cpp" />
     <ClCompile Include="src\BaseLib\String.cpp" />
     <ClCompile Include="src\BaseLib\Util.cpp" />
     <ClCompile Include="src\Core\BankClient.cpp" />
     <ClCompile Include="src\Core\UserLogRegister.cpp" />
+    <ClCompile Include="src\GUI_Layer\AddClientWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\AddUserWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\CleintListWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\ClientDataWidnow.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_stdlib.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\GUI_Layer\LoginMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateClientWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateUserWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UserDataWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UsersListWindow.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\App\Application.h" />
+    <ClInclude Include="src\App\Console.h" />
     <ClInclude Include="src\Core\BankUser.h" />
     <ClInclude Include="src\Core\BankClient.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Date.h" />
@@ -109,6 +137,31 @@
     <ClInclude Include="src\Core\Repository.h" />
     <ClInclude Include="src\BaseLib\Date_Time\Time.h" />
     <ClInclude Include="src\Core\UserLogRegister.h" />
+    <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
+    <ClInclude Include="src\GUI_Layer\AddUserWindow.h" />
+    <ClInclude Include="src\GUI_Layer\BaseWindow.h" />
+    <ClInclude Include="src\GUI_Layer\CleintListWindow.h" />
+    <ClInclude Include="src\GUI_Layer\ClientDataWidnow.h" />
+    <ClInclude Include="src\GUI_Layer\GUI_Layer.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imconfig.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_internal.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_stdlib.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
+    <ClInclude Include="src\GUI_Layer\LoginMenu.h" />
+    <ClInclude Include="src\GUI_Layer\MainMenu.h" />
+    <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
+    <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UpdateClientWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UpdateUserWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UserDataWindow.h" />
+    <ClInclude Include="src\GUI_Layer\UsersListWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
@@ -116,6 +169,5 @@
     <Text Include="USERS.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

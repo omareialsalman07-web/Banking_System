@@ -3,6 +3,7 @@
 #include "Im_Gui.h"
 #include <App/Application.h>
 #include <Core/BankUser.h>
+#include <Core/UserLogRegister.h>
 #include <Core/Repository.h>
 
 
@@ -64,6 +65,8 @@ void LoginMenu::Login()
 	BankUser bu = userRepo.Find(_Username);
 	if (!bu.IsEmpty() && bu.GetPassword() == _Password)
 	{
+        Repository<UserLogRegister> userLogRepo(Repository<UserLogRegister>::GetStandard_LogRegisterFileName());
+        userLogRepo.Add(UserLogRegister(bu));
 
 		if (_App)
 		{
