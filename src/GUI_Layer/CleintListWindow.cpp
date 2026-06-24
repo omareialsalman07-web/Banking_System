@@ -6,8 +6,7 @@
 #include "GUI_Layer.h"
 #include <App/Application.h>
 
-CleintListWindow::CleintListWindow(int index, Application* app) : BaseWindow("Client List : " + std::to_string(index)),
-    _App(app)
+CleintListWindow::CleintListWindow(int index) : BaseWindow("Client List : " + std::to_string(index))
 {
 	_Clients = _GetAllClients();
 }
@@ -52,12 +51,9 @@ void CleintListWindow::_DrawClientList()
             ImGui::Text("%.3f", _Clients[i].GetBalance());
 			ImGui::PushID(i);
             ImGui::SameLine(); 
-            if(ImGui::Button("Change Cleint"))
+            if (ImGui::Button("Change Cleint"))
             {
-                if (_App)
-                {
-                    _App->CreateWindow(std::make_unique<UpdateClientWindow>(_App->GetWindowsCount(), &_Clients[i], &_ShowChangeClientPopup));
-                }
+                Application::GetInstance().CreateWindow(std::make_unique<UpdateClientWindow>(Application::GetInstance().GetWindowsCount(), &_Clients[i], &_ShowChangeClientPopup));
             }
 			ImGui::PopID();
         }

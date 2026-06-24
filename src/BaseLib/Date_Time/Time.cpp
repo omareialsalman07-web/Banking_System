@@ -26,7 +26,7 @@ BaseLib::Time BaseLib::Time::GetCurrentTime()
 	return Time();
 }
 
-std::string BaseLib::Time::TimeToString() const
+std::string BaseLib::Time::ToString() const
 {
     return std::to_string(_Hours) + ":" +
         std::to_string(_Minutes) + ":" +

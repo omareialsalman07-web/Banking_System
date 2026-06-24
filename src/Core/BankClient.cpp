@@ -1,5 +1,7 @@
 #include "BankClient.h"
 #include "BaseLib/String.h"
+#include "Repository.h"
+#include "RegisterTransferLog.h"
 
 #include <vector>
 
@@ -59,14 +61,23 @@ bool BankClient::Withdraw(double Amount)
 	}
 }
 
-bool BankClient::Transfer(double Amount, BankClient& distanceClient)
+bool BankClient::Transfer(double Amount, BankClient& distanceClient, const std::string& userName)
 {
 	if (Withdraw(Amount))
 	{
 		distanceClient.Deposit(Amount);
-		
+		_RegisterTranferLog(Amount, distanceClient, userName);
 		return true;
 	}
-
 	return false;
+}
+
+void BankClient::_RegisterTranferLog(double amount, const BankClient& distanceClient, const std::string& userName)
+{
+	Repository<RegisterTransferLog> repo(Repository<RegisterTransferLog>::GetStandard_RegisterTransferLogFileName());
+
+	RegisterTransferLog transferRegister = RegisterTransferLog(BaseLib::Date::GetCurrnetDate(), BaseLib::Time::GetCurrentTime(),
+		this->GetAccountNumber(), distanceClient.GetAccountNumber(), amount, userName);
+
+	repo.Add(transferRegister);
 }

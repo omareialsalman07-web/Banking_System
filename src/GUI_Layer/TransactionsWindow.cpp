@@ -1,6 +1,7 @@
 #include "TransactionsWindow.h"
 
 #include "Im_Gui.h"
+#include "../App/Application.h"
 
 TransactionsWindow::TransactionsWindow(int index)
     : BaseWindow("Transactions " + std::to_string(index))
@@ -210,7 +211,7 @@ void TransactionsWindow::_HandleTransfer()
         return;
     }
 
-    if (_FromClient.Transfer(_TransferAmount, _ToClient))
+    if (_FromClient.Transfer(_TransferAmount, _ToClient, Application::GetInstance().GetCurrentUser().GetUserName()))
     {
         _ClientsRepo.Update(_FromClient);
         _ClientsRepo.Update(_ToClient);

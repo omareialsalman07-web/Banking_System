@@ -52,7 +52,7 @@ namespace BaseLib
     void Date::SetYear(short Year) { _Year = Year; }
     short Date::GetYear() const { return _Year; }
 
-    void Date::Print() { cout << DateToString() << endl; }
+    void Date::Print() { cout << ToString() << endl; }
 
     bool Date::IsValidDate(Date Date) {
         if (Date.GetMonth() < 1 || Date.GetMonth() > 12) return false;
@@ -62,11 +62,11 @@ namespace BaseLib
 
     bool Date::IsValid() { return IsValidDate(*this); }
 
-    string Date::DateToString(Date Date) {
+    string Date::ToString(Date Date) {
         return to_string(Date.GetDay()) + "/" + to_string(Date.GetMonth()) + "/" + to_string(Date.GetYear());
     }
 
-    string Date::DateToString() { return DateToString(*this); }
+    string Date::ToString() const { return ToString(*this); }
 
     bool Date::isLeapYear(short Year) {
         return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);

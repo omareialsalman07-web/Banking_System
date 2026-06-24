@@ -8,7 +8,7 @@
 class CleintListWindow : public BaseWindow
 {
 public:
-	CleintListWindow(int index, class Application* app);
+	CleintListWindow(int index);
 	~CleintListWindow() = default;
 
 private:
@@ -19,7 +19,5 @@ private:
 
 	std::vector<BankClient> _Clients;
 	std::vector<BankClient> _GetAllClients();
-
-	Application* _App;
 };
 

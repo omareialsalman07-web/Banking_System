@@ -9,3 +9,4 @@
 #include "UpdateClientWindow.h"
 #include "AddClientWindow.h"
 #include "LogRegisterWidnow.h"
+#include "TranferRegisterWindow.h"

@@ -38,6 +38,6 @@ namespace BaseLib
 		static void AddSeconds(Time& time, short Seconds);
 		void AddSeconds(short Seconds);
 
-		std::string TimeToString() const;
+		std::string ToString() const;
 	};
 }

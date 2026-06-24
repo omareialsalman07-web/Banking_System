@@ -49,8 +49,8 @@ namespace BaseLib
         static bool IsValidDate(Date Date);
         bool IsValid();
 
-        static string DateToString(Date Date);
-        string DateToString();
+        static string ToString(Date Date);
+        string ToString() const;
 
         static bool isLeapYear(short Year);
         bool isLeapYear() const;

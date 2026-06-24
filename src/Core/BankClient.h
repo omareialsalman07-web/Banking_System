@@ -17,8 +17,7 @@ public:
 	BankClient(const std::string& FirstName, const std::string& LastName, const std::string& Email, 
 		const std::string& Phone, const std::string& AccountNumber, double Balance);
 	
-	//void SetAccountNumber(std::string AccountNumber) { _AccountNumber = AccountNumber; }
-	std::string GetAccountNumber() { return _AccountNumber; }
+	std::string GetAccountNumber() const { return _AccountNumber; }
 	
 	void SetBalance(double Balance) { _Balance = Balance; }
 	double GetBalance() const { return _Balance; }
@@ -33,5 +32,8 @@ public:
 
 	bool Deposit(double Amount);
 	bool Withdraw(double Amount);
-	bool Transfer(double Amount, BankClient& distanceClient);
+	bool Transfer(double Amount, BankClient& distanceClient, const std::string& userName);
+
+private:
+	void _RegisterTranferLog(double amount, const BankClient& distanceClient, const std::string& userName);
 };

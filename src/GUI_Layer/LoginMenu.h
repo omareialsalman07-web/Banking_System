@@ -7,14 +7,12 @@ class Application;
 class LoginMenu : public BaseWindow
 {
 public:
-	LoginMenu(Application* app);
+	LoginMenu();
 	~LoginMenu() = default;
 
 	void Render() override;
 
 private:
-	Application* _App;
-
 	std::string _Username;
 	std::string _Password;
 

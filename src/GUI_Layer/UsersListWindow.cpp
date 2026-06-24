@@ -4,10 +4,9 @@
 #include "GUI_Layer.h"
 #include <App/Application.h>
 
-UsersListWindow::UsersListWindow(int index, Application* App) : BaseWindow("Users List : " + std::to_string(index)),
+UsersListWindow::UsersListWindow(int index) : BaseWindow("Users List : " + std::to_string(index)),
     repo(Repository<BankUser>::GetStandard_UsersFileName())
 {
-	_App = App;
     _Users = _GetAllUsers();
 }
 
@@ -54,10 +53,9 @@ void UsersListWindow::_DrawUsersList()
             ImGui::SameLine();
             if (ImGui::Button("Change User"))
             {
-                if(_App)
-                {
-                    _App->CreateWindow(std::make_unique<UpdateUserWindow>(_App->GetWindowsCount(), &_Users[i], &_ShowChangeUserPopup));
-				}
+                
+                    Application::GetInstance().CreateWindow(std::make_unique<UpdateUserWindow>(Application::GetInstance().GetWindowsCount(), &_Users[i], &_ShowChangeUserPopup));
+				
             }
             ImGui::SameLine();
             if (ImGui::Button("X"))

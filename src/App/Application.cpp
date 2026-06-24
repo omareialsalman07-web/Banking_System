@@ -9,8 +9,8 @@ Application::Application()
 {
     Init();
 
-	mainMenu = std::make_unique<MainMenu>(this);
-	loginMenu = std::make_unique<LoginMenu>(this);
+	mainMenu = std::make_unique<MainMenu>();
+	loginMenu = std::make_unique<LoginMenu>();
 
     SetAppState(enApplicationState::eLoggedOut);
 	CurrentUser = BankUser::getEmptyUser();
@@ -19,6 +19,13 @@ Application::Application()
 Application::~Application()
 {
     Shutdown();
+}
+
+Application& Application::GetInstance()
+{
+    static Application instance;
+
+    return instance;
 }
 
 void Application::Init()

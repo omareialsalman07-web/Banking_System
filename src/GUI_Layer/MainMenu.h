@@ -7,12 +7,10 @@ class Application;
 class MainMenu : public BaseWindow
 {
 public :
-	MainMenu(Application* app);
+	MainMenu();
 	~MainMenu() = default;
 	void Render() override;
 
 private:
-	Application* _App;
-	
 	void Logut();
 };

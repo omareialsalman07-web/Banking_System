@@ -5,8 +5,7 @@
 #include "GUI_Layer.h"
 #include <string>
 
-ManageUsersWindow::ManageUsersWindow(int index, Application* app) : BaseWindow("Manage Users : " + std::to_string(index)),
-		_App(app)
+ManageUsersWindow::ManageUsersWindow(int index) : BaseWindow("Manage Users : " + std::to_string(index))
 {
 }
 
@@ -16,23 +15,14 @@ void ManageUsersWindow::Render()
 
 	if (ImGui::Button("Users List", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		if (_App)
-		{
-			_App->CreateWindow(std::make_unique<UsersListWindow>(_App->GetWindowsCount(), _App));
-		}
+		Application::GetInstance().CreateWindow(std::make_unique<UsersListWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 	if (ImGui::Button("Add New User", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		if (_App)
-		{
-			_App->CreateWindow(std::make_unique<AddUserWindow>(_App->GetWindowsCount()));
-		}
+		Application::GetInstance().CreateWindow(std::make_unique<AddUserWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 	if (ImGui::Button("Show Login Register", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		if (_App)
-		{
-			_App->CreateWindow(std::make_unique<LogRegisterWindow>(_App->GetWindowsCount()));
-		}
+		Application::GetInstance().CreateWindow(std::make_unique<LogRegisterWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 }

@@ -5,12 +5,11 @@
 class ManageUsersWindow : public BaseWindow
 {
 public:
-	ManageUsersWindow(int index, class Application* app);
+	ManageUsersWindow(int index);
 	~ManageUsersWindow() = default;
 
 private:
 	void Render() override;
-	Application* _App;
 
 };
 

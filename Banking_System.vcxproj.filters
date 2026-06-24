@@ -19,6 +19,7 @@
     <None Include=".gitignore" />
     <None Include="README.md" />
     <None Include="imgui.ini" />
+    <None Include="Dependencies\lib-vc2022\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -118,6 +119,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI_Layer\LogRegisterWidnow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\RegisterTransferLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI_Layer\TranferRegisterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -237,6 +244,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI_Layer\LogRegisterWidnow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\RegisterTransferLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI_Layer\TranferRegisterWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

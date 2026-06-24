@@ -5,7 +5,7 @@
 #include "Im_Gui.h"
 
 
-MainMenu::MainMenu(Application* app) : BaseWindow("Main Menu", false), _App(app)
+MainMenu::MainMenu() : BaseWindow("Main Menu", false)
 {
 
 }
@@ -14,23 +14,27 @@ void MainMenu::Render()
 {
 	DrawScreenHeader("Main Menu");
 
-	ImGui::Text("Welcome, %s!", _App->GetCurrentUser().FullName().c_str());
+	ImGui::Text("Welcome, %s!", Application::GetInstance().GetCurrentUser().FullName().c_str());
 
 	if (ImGui::Button("Client List", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		_App->CreateWindow(std::make_unique<CleintListWindow>(_App->GetWindowsCount(), _App));
+		Application::GetInstance().CreateWindow(std::make_unique<CleintListWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 	if (ImGui::Button("Add New Client", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		_App->CreateWindow(std::make_unique<AddClientWindow>(_App->GetWindowsCount()));
+		Application::GetInstance().CreateWindow(std::make_unique<AddClientWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 	if (ImGui::Button("Transactions", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		_App->CreateWindow(std::make_unique<TransactionsWindow>(_App->GetWindowsCount()));
+		Application::GetInstance().CreateWindow(std::make_unique<TransactionsWindow>(Application::GetInstance().GetWindowsCount()));
+	}
+	if (ImGui::Button("Transfer Money Register", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
+	{
+		Application::GetInstance().CreateWindow(std::make_unique<TranferRegisterWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 	if (ImGui::Button("Manage Users Window", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
-		_App->CreateWindow(std::make_unique<ManageUsersWindow>(_App->GetWindowsCount(), _App));
+		Application::GetInstance().CreateWindow(std::make_unique<ManageUsersWindow>(Application::GetInstance().GetWindowsCount()));
 	}
 
 	if (ImGui::Button("Logout", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
@@ -41,9 +45,6 @@ void MainMenu::Render()
 
 void MainMenu::Logut()
 {
-	if (_App)
-	{
-		_App->SetCurrentUser(BankUser::getEmptyUser());
-		_App->SetAppState(Application::enApplicationState::eLoggedOut);
-	}
+	Application::GetInstance().SetCurrentUser(BankUser::getEmptyUser());
+	Application::GetInstance().SetAppState(Application::enApplicationState::eLoggedOut);
 }

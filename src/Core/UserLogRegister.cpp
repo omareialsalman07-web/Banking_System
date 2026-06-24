@@ -1,28 +1,44 @@
 #include "UserLogRegister.h"
 
+#include "BankUser.h"
+
 #include <BaseLib/Date_Time/Date.h>
 #include <BaseLib/Date_Time/Time.h>
 #include <BaseLib/String.h>
-#include "Repository.h"
-#include <string>
 
-UserLogRegister::UserLogRegister(const BankUser& User) : _User(User)
+#include <vector>
+
+
+UserLogRegister::UserLogRegister(const std::string& userName)
 {
+    m_UserName = userName;
+
+    m_DateTime =
+        BaseLib::Date::GetCurrnetDate().ToString()
+        + " - " +
+        BaseLib::Time::GetCurrentTime().ToString();
 }
 
-std::string UserLogRegister::ToLine(const std::string& separetor) const
+
+std::string UserLogRegister::ToLine(const std::string& separator) const
 {
-    std::string line = BaseLib::Date::GetCurrnetDate().DateToString() + " - " + BaseLib::Time::GetCurrentTime().TimeToString();
-    line = line + separetor + _User.GetUserName();
-    return line;
+    return
+        m_DateTime + separator +
+        m_UserName;
 }
 
-void UserLogRegister::FromLine(std::string Line, const std::string& separetor)
+
+void UserLogRegister::FromLine(std::string line, const std::string& separator)
 {
-    std::vector<std::string> vData = BaseLib::String::Split(Line, separetor);
+    std::vector<std::string> data =
+        BaseLib::String::Split(line, separator);
 
-    SetDateTime(vData[0]);
 
-    Repository<BankUser> userRepo(Repository<BankUser>::GetStandard_UsersFileName());
-    _User = userRepo.Find(vData[1]);
+    if (data.size() < 2)
+        return;
+
+
+    m_DateTime = data[0];
+
+    m_UserName = data[1];
 }

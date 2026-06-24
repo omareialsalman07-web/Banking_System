@@ -93,12 +93,13 @@
     <None Include="Banking_System.slnx" />
     <None Include="README.md" />
     <None Include="imgui.ini" />
-    <None Include="LogRegisters" />
     <None Include="Dependencies\lib-vc2022\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\App\Console.cpp" />
+    <ClCompile Include="src\Core\RegisterTransferLog.cpp" />
+    <ClCompile Include="src\GUI_Layer\TranferRegisterWindow.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Core\BankUser.cpp" />
     <ClCompile Include="src\Core\BankClient.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="src\App\Console.h" />
     <ClInclude Include="src\Core\BankUser.h" />
     <ClInclude Include="src\Core\BankClient.h" />
+    <ClInclude Include="src\Core\RegisterTransferLog.h" />
     <ClInclude Include="src\Core\Repository.h" />
     <ClInclude Include="src\Core\Person.h" />
     <ClInclude Include="src\Core\IPersistable.h" />
@@ -168,6 +170,7 @@
     <ClInclude Include="src\GUI_Layer\imgui\imstb_truetype.h" />
     <ClInclude Include="src\GUI_Layer\LogRegisterWidnow.h" />
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
+    <ClInclude Include="src\GUI_Layer\TranferRegisterWindow.h" />
     <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateClientWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateUserWindow.h" />

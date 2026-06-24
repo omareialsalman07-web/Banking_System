@@ -7,8 +7,8 @@
 #include <Core/Repository.h>
 
 
-LoginMenu::LoginMenu(Application* app) : BaseWindow("Login Menu", false, ImGuiWindowFlags_NoResize |
-     ImGuiWindowFlags_NoDocking), _App(app)
+LoginMenu::LoginMenu() : BaseWindow("Login Menu", false, ImGuiWindowFlags_NoResize |
+     ImGuiWindowFlags_NoDocking)
 {
 }
 
@@ -67,26 +67,21 @@ void LoginMenu::Login()
         return;
     }
 
-	Repository<BankUser> userRepo(Repository<BankUser>::GetStandard_UsersFileName());
-	BankUser bu = userRepo.Find(_Username);
-	if (!bu.IsEmpty() && bu.GetPassword() == _Password)
-	{
+    Repository<BankUser> userRepo(Repository<BankUser>::GetStandard_UsersFileName());
+    BankUser bu = userRepo.Find(_Username);
+    if (!bu.IsEmpty() && bu.GetPassword() == _Password)
+    {
         Repository<UserLogRegister> userLogRepo(Repository<UserLogRegister>::GetStandard_LogRegisterFileName());
-        userLogRepo.Add(UserLogRegister(bu));
+        userLogRepo.Add(UserLogRegister(_Username));
 
-		if (_App)
-		{
-			_App->SetCurrentUser(bu);
-            _App->SetAppState(Application::enApplicationState::eLoggedIn);
-		}
-		ShowMessage("Login successful!");
-	}
-	else
-	{
-        if (_App)
-        {
-            _App->TakeLoginAttemp();
-            ShowError("Invalid username or password. (" + std::to_string(_App->GetLoginAttempsCount()) + ") Attemps left!");
-        }
-	}
+        Application::GetInstance().SetCurrentUser(bu);
+        Application::GetInstance().SetAppState(Application::enApplicationState::eLoggedIn);
+
+        ShowMessage("Login successful!");
+    }
+    else
+    {
+        Application::GetInstance().TakeLoginAttemp();
+        ShowError("Invalid username or password. (" + std::to_string(Application::GetInstance().GetLoginAttempsCount()) + ") Attemps left!");
+    }
 }
