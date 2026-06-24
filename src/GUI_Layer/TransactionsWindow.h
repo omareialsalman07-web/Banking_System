@@ -1,7 +1,8 @@
 #pragma once
 
 #include "BaseWindow.h"
-#include <iostream>
+
+#include <string>
 
 #include <Core/Repository.h>
 #include <Core/BankCLient.h>
@@ -9,19 +10,41 @@
 class TransactionsWindow : public BaseWindow
 {
 public:
-	TransactionsWindow(int index);
-	~TransactionsWindow() = default;
+    explicit TransactionsWindow(int index);
+    ~TransactionsWindow() override = default;
 
 private:
-	void Render() override;
+    void Render() override;
 
-	std::string _AccountNumber;
-	double _Amount = 0;
+private:
+    Repository<BankClient> _ClientsRepo;
 
-	Repository<BankClient> _ClientsRepo;
-	BankClient _TargetClient;
+    // Deposit / Withdraw
+    std::string _AccountNumber;
+    BankClient _TargetClient;
+    double _TransactionAmount = 0.0;
 
-	void _DrawClientInfo();
-	void _HandleTransaction();
+    // Transfer
+    std::string _FromAccountNumber;
+    std::string _ToAccountNumber;
+
+    BankClient _FromClient;
+    BankClient _ToClient;
+
+    double _TransferAmount = 0.0;
+
+private:
+    void _DrawTransactionSection();
+    void _DrawTransferSection();
+
+    void _HandleDeposit();
+    void _HandleWithdraw();
+    void _HandleTransfer();
+
+    bool _FindClient(const std::string& accountNumber, BankClient& client);
+
+    void _DrawClientInfo(const BankClient& client);
+
+    void _ResetTransactionState();
+    void _ResetTransferState();
 };
-

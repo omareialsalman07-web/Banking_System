@@ -11,5 +11,6 @@ public:
 private:
 	void Render() override;
 	Application* _App;
+
 };
 

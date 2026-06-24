@@ -21,7 +21,7 @@ public:
 	std::string GetAccountNumber() { return _AccountNumber; }
 	
 	void SetBalance(double Balance) { _Balance = Balance; }
-	double GetBalance() { return _Balance; }
+	double GetBalance() const { return _Balance; }
 	
 	std::string ToLine(const std::string& separetor = "#//#") const override;
 	void FromLine(std::string Line, const std::string& separetor = "#//#") override;
