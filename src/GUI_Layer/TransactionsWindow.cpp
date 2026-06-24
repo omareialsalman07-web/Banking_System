@@ -204,27 +204,22 @@ void TransactionsWindow::_HandleTransfer()
         return;
     }
 
-    if (_FromClient.GetAccountNumber() ==
-        _ToClient.GetAccountNumber())
+    if (_FromClient.GetAccountNumber() == _ToClient.GetAccountNumber())
     {
         ShowError("Cannot transfer to same account");
         return;
     }
 
-    bool withdrawn = _FromClient.Withdraw(_TransferAmount);
-
-    if (!withdrawn)
+    if (_FromClient.Transfer(_TransferAmount, _ToClient))
+    {
+        _ClientsRepo.Update(_FromClient);
+        _ClientsRepo.Update(_ToClient);
+        ShowMessage("Transfer Successful");
+    }
+    else
     {
         ShowError("Insufficient Balance");
-        return;
     }
-
-    _ToClient.Deposit(_TransferAmount);
-
-    _ClientsRepo.Update(_FromClient);
-    _ClientsRepo.Update(_ToClient);
-
-    ShowMessage("Transfer Successful");
 
     _ResetTransferState();
 }

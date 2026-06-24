@@ -33,4 +33,5 @@ public:
 
 	bool Deposit(double Amount);
 	bool Withdraw(double Amount);
+	bool Transfer(double Amount, BankClient& distanceClient);
 };

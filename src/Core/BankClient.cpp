@@ -58,3 +58,15 @@ bool BankClient::Withdraw(double Amount)
 		return true;
 	}
 }
+
+bool BankClient::Transfer(double Amount, BankClient& distanceClient)
+{
+	if (Withdraw(Amount))
+	{
+		distanceClient.Deposit(Amount);
+		
+		return true;
+	}
+
+	return false;
+}
