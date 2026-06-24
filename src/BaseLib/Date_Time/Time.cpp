@@ -5,15 +5,9 @@
 
 BaseLib::Time::Time()
 {
-<<<<<<< HEAD
-    time_t t = time(0);
-    struct tm now;
-    localtime_s(&now, &t);
-=======
 	time_t t = time(0);
 	struct tm now;
 	localtime_s(&now, &t); // if linux use localtime_r instead of localtime_s
->>>>>>> GUI_Layer
 
     _Hours = now.tm_hour;
     _Minutes = now.tm_min;
@@ -29,11 +23,7 @@ BaseLib::Time::Time(short Hours, short Minutes, short Seconds)
 
 BaseLib::Time BaseLib::Time::GetCurrentTime()
 {
-<<<<<<< HEAD
-    return Time();
-=======
 	return Time();
->>>>>>> GUI_Layer
 }
 
 std::string BaseLib::Time::TimeToString() const
@@ -128,9 +118,5 @@ void BaseLib::Time::AddSeconds(Time& time, short Seconds)
 
 void BaseLib::Time::AddSeconds(short Seconds)
 {
-<<<<<<< HEAD
-    AddSeconds(*this, Seconds);
-=======
 	AddSeconds(*this, Seconds);
->>>>>>> GUI_Layer
 }
