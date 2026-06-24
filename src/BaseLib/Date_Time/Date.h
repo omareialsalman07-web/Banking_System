@@ -33,6 +33,18 @@ namespace BaseLib
 
         void SetYear(short Year);
         short GetYear() const;
+<<<<<<< HEAD
+=======
+
+        void SetHours(short Hours);
+        short GetHours() const;
+
+        void SetMinutes(short Minutes);
+        short GetMinutes() const;
+
+        void SetSeconds(short Seconds);
+        short GetSeconds() const;
+>>>>>>> GUI_Layer
 
         // Methods
         void Print();

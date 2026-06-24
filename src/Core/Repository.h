@@ -104,18 +104,7 @@ public:
         SaveAll(list);
     }
 
-    void AddLoginRegister(const T& obj, std::string logFileName)
-    {
-        std::string line = BaseLib::Date::GetCurrnetDate().DateToString() + " - " + BaseLib::Time::GetCurrentTime().TimeToString();
-        line = line + "#//#" + obj.ToLine();
-
-        std::fstream file(logFileName, std::ios::out);
-        if(file.is_open())
-            file << line;
-
-        file.close();
-    }
-
     inline static std::string GetStandard_ClientsFileName() { return "CLIENTS.txt"; }
     inline static std::string GetStandard_UsersFileName() { return "USERS.txt"; }
+    inline static std::string GetStandard_LogRegisterFileName() { return "LogRegisters.txt"; }
 };

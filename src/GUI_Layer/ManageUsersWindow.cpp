@@ -28,4 +28,11 @@ void ManageUsersWindow::Render()
 			_App->CreateWindow(std::make_unique<AddUserWindow>(_App->GetWindowsCount()));
 		}
 	}
+	if (ImGui::Button("Show Login Register", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
+	{
+		if (_App)
+		{
+			_App->CreateWindow(std::make_unique<LogRegisterWindow>(_App->GetWindowsCount()));
+		}
+	}
 }

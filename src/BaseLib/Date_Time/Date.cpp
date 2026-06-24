@@ -8,7 +8,10 @@
 namespace BaseLib
 {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> GUI_Layer
     Date::Date() {
         time_t t = time(0);
         struct tm now;

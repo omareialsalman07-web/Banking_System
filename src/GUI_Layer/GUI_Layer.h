@@ -8,3 +8,4 @@
 #include "AddUserWindow.h"
 #include "UpdateClientWindow.h"
 #include "AddClientWindow.h"
+#include "LogRegisterWidnow.h"

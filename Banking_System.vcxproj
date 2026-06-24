@@ -21,17 +21,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+<<<<<<< HEAD
+=======
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+>>>>>>> GUI_Layer
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
   </ImportGroup>
@@ -40,12 +45,23 @@
   </ImportGroup>
   <PropertyGroup>
     <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\inet\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\int\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
+<<<<<<< HEAD
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
+=======
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build\int\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)Dependencies\include</AdditionalIncludeDirectories>
@@ -53,29 +69,59 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+>>>>>>> GUI_Layer
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="Banking_System.slnx" />
+<<<<<<< HEAD
     <None Include="README.md" />
     <None Include="imgui.ini" />
     <None Include="LogRegisters" />
     <None Include="Dependencies\lib-vc2022\glfw3.dll" />
+=======
+    <None Include="imgui.ini" />
+    <None Include="README.md" />
+>>>>>>> GUI_Layer
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\App\Console.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Core\BankUser.cpp" />
     <ClCompile Include="src\Core\BankClient.cpp" />
+=======
+    <ClCompile Include="src\BaseLib\Date_Time\Time.cpp" />
+    <ClCompile Include="src\Core\BankUser.cpp" />
+>>>>>>> GUI_Layer
     <ClCompile Include="src\BaseLib\Date_Time\Date.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Time.cpp" />
     <ClCompile Include="src\BaseLib\Date_Time\Period.cpp" />
     <ClCompile Include="src\BaseLib\String.cpp" />
     <ClCompile Include="src\BaseLib\Util.cpp" />
+<<<<<<< HEAD
     <!-- GUI -->
     <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
@@ -99,6 +145,33 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_stdlib.cpp" />
+=======
+    <ClCompile Include="src\Core\BankClient.cpp" />
+    <ClCompile Include="src\Core\UserLogRegister.cpp" />
+    <ClCompile Include="src\GUI_Layer\AddClientWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\AddUserWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\BaseWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\CleintListWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\ClientDataWidnow.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_stdlib.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\GUI_Layer\LoginMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\LogRegisterWidnow.cpp" />
+    <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateClientWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UpdateUserWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UserDataWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\UsersListWindow.cpp" />
+    <ClCompile Include="src\main.cpp" />
+>>>>>>> GUI_Layer
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\App\Application.h" />
@@ -113,15 +186,41 @@
     <ClInclude Include="src\BaseLib\Date_Time\Period.h" />
     <ClInclude Include="src\BaseLib\String.h" />
     <ClInclude Include="src\BaseLib\Util.h" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="src\Core\IPersistable.h" />
+    <ClInclude Include="src\Core\Person.h" />
+    <ClInclude Include="src\Core\Repository.h" />
+    <ClInclude Include="src\BaseLib\Date_Time\Time.h" />
+    <ClInclude Include="src\Core\UserLogRegister.h" />
+>>>>>>> GUI_Layer
     <ClInclude Include="src\GUI_Layer\AddClientWindow.h" />
     <ClInclude Include="src\GUI_Layer\AddUserWindow.h" />
     <ClInclude Include="src\GUI_Layer\BaseWindow.h" />
     <ClInclude Include="src\GUI_Layer\CleintListWindow.h" />
     <ClInclude Include="src\GUI_Layer\ClientDataWidnow.h" />
+<<<<<<< HEAD
     <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
     <ClInclude Include="src\GUI_Layer\MainMenu.h" />
     <ClInclude Include="src\GUI_Layer\LoginMenu.h" />
     <ClInclude Include="src\GUI_Layer\GUI_Layer.h" />
+=======
+    <ClInclude Include="src\GUI_Layer\GUI_Layer.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imconfig.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_internal.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imgui_stdlib.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\GUI_Layer\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
+    <ClInclude Include="src\GUI_Layer\LoginMenu.h" />
+    <ClInclude Include="src\GUI_Layer\LogRegisterWidnow.h" />
+    <ClInclude Include="src\GUI_Layer\MainMenu.h" />
+>>>>>>> GUI_Layer
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
     <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
     <ClInclude Include="src\GUI_Layer\UpdateClientWindow.h" />
@@ -131,7 +230,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="CLIENTS.txt" />
+    <Text Include="LogRegisters.txt" />
     <Text Include="USERS.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+<<<<<<< HEAD
+=======
+  <ImportGroup Label="ExtensionTargets" />
+>>>>>>> GUI_Layer
 </Project>
