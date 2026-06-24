@@ -114,6 +114,7 @@
     <ClCompile Include="src\GUI_Layer\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\GUI_Layer\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\GUI_Layer\LoginMenu.cpp" />
+    <ClCompile Include="src\GUI_Layer\LogRegisterWidnow.cpp" />
     <ClCompile Include="src\GUI_Layer\MainMenu.cpp" />
     <ClCompile Include="src\GUI_Layer\ManageUsersWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\TransactionsWindow.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\GUI_Layer\imgui\imstb_truetype.h" />
     <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
     <ClInclude Include="src\GUI_Layer\LoginMenu.h" />
+    <ClInclude Include="src\GUI_Layer\LogRegisterWidnow.h" />
     <ClInclude Include="src\GUI_Layer\MainMenu.h" />
     <ClInclude Include="src\GUI_Layer\ManageUsersWindow.h" />
     <ClInclude Include="src\GUI_Layer\TransactionsWindow.h" />
