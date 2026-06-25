@@ -104,8 +104,8 @@ public:
         SaveAll(list);
     }
 
-    inline static std::string GetStandard_ClientsFileName() { return "CLIENTS.txt"; }
-    inline static std::string GetStandard_UsersFileName() { return "USERS.txt"; }
-    inline static std::string GetStandard_LogRegisterFileName() { return "LogRegisters.txt"; }
-    inline static std::string GetStandard_RegisterTransferLogFileName() { return "RegisterTransferLog.txt"; }
+    inline static std::string GetStandard_ClientsFileName() { return "data/CLIENTS.txt"; }
+    inline static std::string GetStandard_UsersFileName() { return "data/USERS.txt"; }
+    inline static std::string GetStandard_LogRegisterFileName() { return "data/LogRegisters.txt"; }
+    inline static std::string GetStandard_RegisterTransferLogFileName() { return "data/RegisterTransferLog.txt"; }
 };

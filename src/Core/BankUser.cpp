@@ -1,5 +1,6 @@
 #include "BankUser.h"
 #include "BaseLib/String.h"
+#include "../BaseLib/Util.h"
 
 #include <vector>
 
@@ -23,7 +24,7 @@ void BankUser::AddPermission(enPermissions Permission)
 std::string BankUser::ToLine(const std::string& separetor) const
 {
 	return GetFirstName() + separetor + GetLastName() + separetor + GetEmail() + separetor + 
-		GetPhone() + separetor + _UserName + separetor + _Password + separetor + std::to_string(_Permissions);
+		GetPhone() + separetor + _UserName + separetor + BaseLib::Util::EncryptText(_Password, 4) + separetor + std::to_string(_Permissions);
 }
 
 void BankUser::FromLine(std::string Line, const std::string& separetor)
@@ -35,7 +36,7 @@ void BankUser::FromLine(std::string Line, const std::string& separetor)
 	SetEmail(vData[2]);
 	SetPhone(vData[3]);
 	_UserName = vData[4];
-	SetPassword(vData[5]);
+	SetPassword(BaseLib::Util::DecryptText(vData[5], 4));
 	SetPermissions(std::stoi(vData[6]));
 }
 

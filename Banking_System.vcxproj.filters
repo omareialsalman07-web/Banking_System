@@ -254,8 +254,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CLIENTS.txt" />
-    <Text Include="USERS.txt" />
-    <Text Include="LogRegisters.txt" />
+    <Text Include="data\CLIENTS.txt" />
+    <Text Include="data\LogRegisters.txt" />
+    <Text Include="data\RegisterTransferLog.txt" />
+    <Text Include="data\USERS.txt" />
   </ItemGroup>
 </Project>
