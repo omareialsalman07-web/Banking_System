@@ -108,4 +108,5 @@ public:
     inline static std::string GetStandard_UsersFileName() { return "data/USERS.txt"; }
     inline static std::string GetStandard_LogRegisterFileName() { return "data/LogRegisters.txt"; }
     inline static std::string GetStandard_RegisterTransferLogFileName() { return "data/RegisterTransferLog.txt"; }
+    inline static std::string GetStandard_CurrenciesFileName() { return "data/Currencies.txt"; }
 };

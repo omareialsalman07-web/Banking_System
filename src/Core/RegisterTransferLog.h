@@ -1,9 +1,9 @@
 #pragma once
 
 #include "IPersistable.h"
-#include "../BaseLib/String.h"
-#include "../BaseLib/Date_Time/Date.h"
-#include "../BaseLib/Date_Time/Time.h"
+#include <BaseLib/String.h>
+#include <BaseLib/Date_Time/Date.h>
+#include <BaseLib/Date_Time/Time.h>
 
 
 class RegisterTransferLog : public IPersistable

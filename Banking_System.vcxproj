@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\App\Console.cpp" />
+    <ClCompile Include="src\Core\BankCurrency.cpp" />
     <ClCompile Include="src\Core\RegisterTransferLog.cpp" />
     <ClCompile Include="src\GUI_Layer\TranferRegisterWindow.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="src\App\Application.h" />
     <ClInclude Include="src\App\Console.h" />
+    <ClInclude Include="src\Core\BankCurrency.h" />
     <ClInclude Include="src\Core\BankUser.h" />
     <ClInclude Include="src\Core\BankClient.h" />
     <ClInclude Include="src\Core\RegisterTransferLog.h" />
@@ -179,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\CLIENTS.txt" />
+    <Text Include="data\Currencies.txt" />
     <Text Include="data\LogRegisters.txt" />
     <Text Include="data\RegisterTransferLog.txt" />
     <Text Include="data\USERS.txt" />

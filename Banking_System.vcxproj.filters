@@ -127,6 +127,9 @@
     <ClCompile Include="src\GUI_Layer\TranferRegisterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\BankCurrency.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseLib\Date_Time\Date.h">
@@ -252,11 +255,15 @@
     <ClInclude Include="src\GUI_Layer\TranferRegisterWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\BankCurrency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\CLIENTS.txt" />
     <Text Include="data\LogRegisters.txt" />
     <Text Include="data\RegisterTransferLog.txt" />
     <Text Include="data\USERS.txt" />
+    <Text Include="data\Currencies.txt" />
   </ItemGroup>
 </Project>
