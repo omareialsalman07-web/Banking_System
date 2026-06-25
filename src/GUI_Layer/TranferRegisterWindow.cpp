@@ -1,6 +1,6 @@
 #include "TranferRegisterWindow.h"
 #include "Im_Gui.h"
-#include "../Core/Repository.h"
+#include <Core/Repository.h>
 
 TranferRegisterWindow::TranferRegisterWindow(int index) : BaseWindow("Transfer Register : " + std::to_string(index))
 {

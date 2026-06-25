@@ -1,7 +1,7 @@
 #include "TransactionsWindow.h"
 
 #include "Im_Gui.h"
-#include "../App/Application.h"
+#include <App/Application.h>
 
 TransactionsWindow::TransactionsWindow(int index)
     : BaseWindow("Transactions " + std::to_string(index))

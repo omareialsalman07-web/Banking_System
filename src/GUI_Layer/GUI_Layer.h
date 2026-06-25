@@ -10,3 +10,5 @@
 #include "AddClientWindow.h"
 #include "LogRegisterWidnow.h"
 #include "TranferRegisterWindow.h"
+#include "CurrenciesExtchangeWindow.h"
+#include "CurrencyListWindow.h"

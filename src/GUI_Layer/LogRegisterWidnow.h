@@ -1,7 +1,7 @@
 #pragma once
 
 #include "BaseWindow.h"
-#include "../Core/UserLogRegister.h"
+#include <Core/UserLogRegister.h>
 #include <vector>
 
 class LogRegisterWindow : public BaseWindow

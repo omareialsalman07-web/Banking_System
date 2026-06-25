@@ -32,6 +32,10 @@ void MainMenu::Render()
 	{
 		Application::GetInstance().CreateWindow(std::make_unique<TranferRegisterWindow>(Application::GetInstance().GetWindowsCount()));
 	}
+	if (ImGui::Button("Currency Extchange", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
+	{
+		Application::GetInstance().CreateWindow(std::make_unique<CurrenciesExtchangeWindow>(Application::GetInstance().GetWindowsCount()));
+	}
 	if (ImGui::Button("Manage Users Window", ImVec2(ImGui::GetWindowSize().x - 30, 30)))
 	{
 		Application::GetInstance().CreateWindow(std::make_unique<ManageUsersWindow>(Application::GetInstance().GetWindowsCount()));

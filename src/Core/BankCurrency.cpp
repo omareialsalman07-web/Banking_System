@@ -20,8 +20,8 @@ void BankCurrency::FromLine(std::string Line, const std::string& separetor)
 	std::vector<std::string> vData = BaseLib::String::Split(Line, separetor);
 
 	m_CountryName = vData[0];
-	m_CurrencyName = vData[1];
-	m_CurrencyCode = vData[2];
+	m_CurrencyCode = vData[1];
+	m_CurrencyName = vData[2];
 	m_Rate = std::stof(vData[3]);
 }
 

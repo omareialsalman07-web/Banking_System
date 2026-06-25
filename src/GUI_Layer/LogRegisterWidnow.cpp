@@ -1,6 +1,6 @@
 #include "LogRegisterWidnow.h"
 #include "Im_Gui.h"
-#include "../Core/Repository.h"
+#include <Core/Repository.h>
 
 LogRegisterWindow::LogRegisterWindow(int index) : BaseWindow("Log Register : " + std::to_string(index))
 {

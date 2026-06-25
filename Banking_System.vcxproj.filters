@@ -130,6 +130,12 @@
     <ClCompile Include="src\Core\BankCurrency.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI_Layer\CurrenciesExtchangeWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI_Layer\CurrencyListWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseLib\Date_Time\Date.h">
@@ -256,6 +262,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\BankCurrency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI_Layer\CurrenciesExtchangeWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI_Layer\CurrencyListWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
