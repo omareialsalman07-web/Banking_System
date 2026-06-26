@@ -17,7 +17,7 @@ public:
 	std::string ToLine(const std::string& separetor = "#//#") const override;
 	void FromLine(std::string Line, const std::string& separetor = "#//#") override;
 
-	std::string GetKey() const override { return m_CountryName; }
+	std::string GetKey() const override { return m_CurrencyCode; }
 	bool IsEmpty() const override { return m_CountryName.empty() || m_CurrencyName.empty() || m_CurrencyCode.empty(); }
 
 	inline std::string GetCountryName() const { return m_CountryName; }

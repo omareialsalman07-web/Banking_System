@@ -10,9 +10,11 @@ BankCurrency::BankCurrency(const std::string& countryName, const std::string& cu
 
 std::string BankCurrency::ToLine(const std::string& separetor) const
 {
-	throw std::runtime_error("Can't add new currency");
-
-	return "";
+	return 
+		m_CountryName + separetor +
+		m_CurrencyCode + separetor +
+		m_CountryName + separetor +
+		std::to_string(m_Rate);
 }
 
 void BankCurrency::FromLine(std::string Line, const std::string& separetor)

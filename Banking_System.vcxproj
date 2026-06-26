@@ -101,6 +101,7 @@
     <ClCompile Include="src\Core\BankCurrency.cpp" />
     <ClCompile Include="src\Core\RegisterTransferLog.cpp" />
     <ClCompile Include="src\GUI_Layer\CurrenciesExtchangeWindow.cpp" />
+    <ClCompile Include="src\GUI_Layer\CurrencyExchangeCalculatorWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\CurrencyListWindow.cpp" />
     <ClCompile Include="src\GUI_Layer\TranferRegisterWindow.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\GUI_Layer\CleintListWindow.h" />
     <ClInclude Include="src\GUI_Layer\ClientDataWidnow.h" />
     <ClInclude Include="src\GUI_Layer\CurrenciesExtchangeWindow.h" />
+    <ClInclude Include="src\GUI_Layer\CurrencyExchangeCalculatorWindow.h" />
     <ClInclude Include="src\GUI_Layer\CurrencyListWindow.h" />
     <ClInclude Include="src\GUI_Layer\Im_Gui.h" />
     <ClInclude Include="src\GUI_Layer\MainMenu.h" />
