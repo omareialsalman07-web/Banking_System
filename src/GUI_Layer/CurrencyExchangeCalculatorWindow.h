@@ -2,6 +2,9 @@
 
 #include "BaseWindow.h"
 
+#include <Core/Repository.h>
+#include <Core/BankCurrency.h>
+
 #include <string>
 #include <vector>
 
@@ -16,6 +19,8 @@ private:
     std::vector<std::string> m_CurrensiesInfo;
     std::string _Result = "0.00";
 
+    Repository<BankCurrency> m_Repo;
+
 public:
     CurrencyExchangeCalculatorWindow(int index);
 
@@ -24,6 +29,9 @@ private:
     void _DrawCurrencyCombo(const char* label, int& selected);
     void DrawCalculatorCard();
     void DrawResultCard();
+
+    std::string GetCurrencyCodeFromStringInfo(const std::string& str);
+    void CalculateCurrency();
 
 protected:
     void Render() override;

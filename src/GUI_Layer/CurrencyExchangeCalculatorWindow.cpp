@@ -1,14 +1,12 @@
 #include "CurrencyExchangeCalculatorWindow.h"
 
+#include <BaseLib/String.h>
+
 #include "Im_GUI.h"
 
-#include <Core/Repository.h>
-#include <Core/BankCurrency.h>
-
-
-
 CurrencyExchangeCalculatorWindow::CurrencyExchangeCalculatorWindow(int index)
-    : BaseWindow("Currency Exchange Calculator " + std::to_string(index), true, ImGuiWindowFlags_NoCollapse)
+    : BaseWindow("Currency Exchange Calculator " + std::to_string(index), true, ImGuiWindowFlags_NoCollapse),
+    m_Repo(Repository<BankCurrency>::GetStandard_CurrenciesFileName())
 {
     _LoadCurrenciesInfo();
 }
@@ -70,7 +68,7 @@ void CurrencyExchangeCalculatorWindow::DrawCalculatorCard()
 
     if (ImGui::Button("Calculate Exchange", ImVec2(-1, 45)))
     {
-        ShowMessage("Calculation system will be connected here.");
+        CalculateCurrency();
     }
 }
 
@@ -93,6 +91,7 @@ void CurrencyExchangeCalculatorWindow::DrawResultCard()
     ImGui::EndChild();
 }
 
+
 void CurrencyExchangeCalculatorWindow::_DrawCurrencyCombo(const char* label, int& selected)
 {
     std::vector<const char*> items;
@@ -106,10 +105,33 @@ void CurrencyExchangeCalculatorWindow::_DrawCurrencyCombo(const char* label, int
     ImGui::PopItemWidth();
 }
 
+std::string CurrencyExchangeCalculatorWindow::GetCurrencyCodeFromStringInfo(const std::string& str)
+{
+    std::vector < std::string> vDate = BaseLib::String::Split(str, "-");
+    return BaseLib::String::Trim(vDate[0]);
+}
+
+void CurrencyExchangeCalculatorWindow::CalculateCurrency()
+{
+    BankCurrency fromCurrency = m_Repo.Find(GetCurrencyCodeFromStringInfo(m_CurrensiesInfo[_FromCurrency]));
+    if (fromCurrency.IsEmpty())
+    {
+        ShowError("Can't find from Currency!");
+        return;
+    }
+    BankCurrency ToCurrency = m_Repo.Find(GetCurrencyCodeFromStringInfo(m_CurrensiesInfo[_ToCurrency]));
+    if (fromCurrency.IsEmpty())
+    {
+        ShowError("Can't find to Currency!");
+        return;
+    }
+
+    _Result = std::to_string(fromCurrency.Convert(_Amount, ToCurrency));
+}
+
 void CurrencyExchangeCalculatorWindow::_LoadCurrenciesInfo()
 {
-    Repository<BankCurrency> repo(Repository<BankCurrency>::GetStandard_CurrenciesFileName());
-    std::vector<BankCurrency> vData = repo.LoadAll();
+    std::vector<BankCurrency> vData = m_Repo.LoadAll();
 
     for (const BankCurrency& c : vData)
     {

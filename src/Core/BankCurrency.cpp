@@ -31,3 +31,18 @@ void BankCurrency::SetRate(float newRate)
 {
 	m_Rate = newRate;
 }
+
+float BankCurrency::ConvertToUSD(float amount)
+{
+	return (float)amount / m_Rate;
+}
+
+float BankCurrency::Convert(float amount, const BankCurrency& toCurrency)
+{
+	float newAmount = ConvertToUSD(amount);
+
+	if (toCurrency.GetCurrencyCode() == "USD")
+		return newAmount;
+
+	return newAmount * toCurrency.GetRate();
+}

@@ -117,39 +117,6 @@ void Application::RenderDockspace()
     ImGui::End();
 }
 
-void Application::RenderMenuBar()
-{
-    if (ImGui::BeginMainMenuBar())
-    {
-        if (ImGui::BeginMenu("File"))
-        {
-            if (ImGui::MenuItem("Exit"))
-                glfwSetWindowShouldClose(window, true);
-
-            ImGui::EndMenu();
-        }
-
-        if (ImGui::BeginMenu("Window"))
-        {
-            ImGui::MenuItem("Console", nullptr, &showConsole);
-            ImGui::EndMenu();
-        }
-
-        if (ImGui::BeginMenu("Actions"))
-        {
-            if (ImGui::MenuItem("Add Log"))
-            {
-                counter++;
-                console.AddLog("Log message #" + std::to_string(counter));
-            }
-
-            ImGui::EndMenu();
-        }
-
-        ImGui::EndMainMenuBar();
-    }
-}
-
 void Application::RenderWindows()
 {
     switch (_AppState)
@@ -186,7 +153,6 @@ void Application::Run()
         BeginFrame();
 
         RenderDockspace();
-        RenderMenuBar();
 
         RenderWindows();
 
@@ -215,4 +181,9 @@ void Application::SetAppState(enApplicationState appState)
 void Application::CreateWindow(std::unique_ptr<BaseWindow> window)
 {
 	vSubWindwos.push_back(std::move(window)); // std::move to avoid copying the unique_ptr, which is not allowed. We transfer ownership instead.
+}
+
+void Application::Terminate()
+{
+    glfwSetWindowShouldClose(window, true);
 }

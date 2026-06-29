@@ -12,5 +12,6 @@ public :
 	void Render() override;
 
 private:
+	void _RenderMenuBar();
 	void Logut();
 };

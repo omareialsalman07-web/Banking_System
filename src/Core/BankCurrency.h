@@ -10,6 +10,8 @@ private:
 	std::string m_CurrencyCode;
 	float m_Rate = 0;
 
+	float ConvertToUSD(float amount);
+
 public:
 	BankCurrency() = default;
 	BankCurrency(const std::string& countryName, const std::string& currencyName, const std::string& currencyCode, float rate);
@@ -26,4 +28,6 @@ public:
 	inline float GetRate() const { return m_Rate; }
 
 	void SetRate(float newRate);
+
+	float Convert(float amount, const BankCurrency& toCurrency);
 };

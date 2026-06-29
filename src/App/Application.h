@@ -35,7 +35,6 @@ private:
     void BeginFrame();
     void EndFrame();
     void RenderDockspace();
-    void RenderMenuBar();
     void RenderWindows();
     void RenderSub_Windows();
 
@@ -63,6 +62,7 @@ public:
     void CreateWindow(std::unique_ptr<BaseWindow> window);
     inline int GetWindowsCount() const { return static_cast<int>(vSubWindwos.size()); }
     void TakeLoginAttemp() { --_LoginAttempsCount; }
+    void Terminate();
 
     inline unsigned int GetLoginAttempsCount() const { return _LoginAttempsCount; }
 };
