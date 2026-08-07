@@ -8,7 +8,8 @@ This project was made for learning purposes and is a great example of a **studen
 
 ## Features
 
-- **Login System** — username + password login with encrypted passwords and a limit of 3 attempts.
+- **Login System** — username + password login with a limit of 3 attempts.
+- **Password Security** — all passwords are **encrypted** before being stored, so they are never saved in plain text (see *Security* below).
 - **Permissions / User Roles** — users have permissions (as a bitmask) that control what they can do (list clients, add clients, transactions, manage users, etc.).
 - **Client Management**
   - View the list of all clients
@@ -75,7 +76,7 @@ The executable is produced in `build/x64/Debug/`.
 | Field | Value |
 |-------|-------|
 | Username | `admin` |
-| Password | `5678` |
+| Password | `1234` |
 
 You can find the default admin account in `data/USERS.txt`.
 
@@ -108,6 +109,10 @@ Banking_System/
 ### Data Storage
 
 The app does **not** use a database. Instead, it uses simple text files where each line represents one record, and fields are separated by `#//#`. The generic `Repository<T>` template class (in `src/Core/Repository.h`) handles loading, saving, finding, adding, updating, and deleting records for any persistable type.
+
+### Security
+
+As a small security measure, user passwords are **encrypted** before being written to `USERS.txt`, so plain-text passwords are never stored on disk. The encryption/decryption helpers live in `src/BaseLib/Util.h`.
 
 ---
 
