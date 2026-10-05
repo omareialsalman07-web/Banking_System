@@ -4,6 +4,8 @@ A C++ desktop application that simulates a small banking system. It lets you man
 
 This project was made for learning purposes and is a great example of a **student-level C++ project** that combines object-oriented design, file I/O, and a GUI framework.
 
+https://lnkd.in/p/dbc2Cx66
+
 ---
 
 ## Features
